@@ -201,6 +201,34 @@
 
 
 
+
+/* --- Project covers ------------------------------------------------------
+   The live sites are truthful evidence, so they are never recoloured — but
+   two of the three are dominated by a saturated green that would put a third
+   hue into the most image-heavy region of a page whose world owns only amber
+   and mint. They rest tamed and come up to full colour on engagement. */
+
+.cover-img {
+  filter: saturate(0.78) brightness(0.9);
+  transition: filter 0.6s var(--ease-expo);
+}
+
+@media (min-width: 1024px) {
+  .cover-img {
+    filter: saturate(0.5) brightness(0.8);
+  }
+
+  .cover-img.is-live {
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover-img {
+    transition: none;
+  }
+}
+
 /* --- Aurora field geometry ---------------------------------------------
    Positioned per breakpoint: the desktop composition pushes the blue body
    far off the top-left, which on a 390px viewport would place it entirely

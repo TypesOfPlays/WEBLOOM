@@ -7,7 +7,7 @@ import Reveal from "./Reveal";
 
 const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-function Cover({ project, eager }: { project: Project; eager?: boolean }) {
+function Cover({ project, live }: { project: Project; live?: boolean }) {
   if (!project.image) {
     return <Schematic kind={project.schematic} />;
   }
@@ -17,9 +17,11 @@ function Cover({ project, eager }: { project: Project; eager?: boolean }) {
       srcSet={`${bp}/work/${project.image}-800.jpg 800w, ${bp}/work/${project.image}-1600.jpg 1600w`}
       sizes="(max-width: 1023px) 92vw, 30rem"
       alt={`The ${project.title} site, as built`}
-      loading={eager ? "eager" : "lazy"}
-      decoding="async"
-      className="h-full w-full object-cover"
+      /* Three small covers, all near the top of the page. Lazy-loading them
+         means a fast scroll paints an undecoded cover as an empty hole. */
+      loading="eager"
+      decoding="sync"
+      className={`cover-img h-full w-full object-cover ${live ? "is-live" : ""}`}
     />
   );
 }
@@ -32,6 +34,7 @@ function Cover({ project, eager }: { project: Project; eager?: boolean }) {
  */
 export default function Work() {
   const [active, setActive] = useState(0);
+  const [engaged, setEngaged] = useState(false);
 
   return (
     <section
@@ -51,9 +54,15 @@ export default function Work() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-x-16 lg:grid-cols-[minmax(0,30rem)_minmax(0,1fr)] lg:items-start">
+        <div
+          className="mt-12 grid gap-x-16 lg:grid-cols-[minmax(0,30rem)_minmax(0,1fr)] lg:items-start"
+          onMouseLeave={() => setEngaged(false)}
+        >
           {/* Sticky cover — desktop only; the rows carry their own on touch */}
-          <div className="hidden lg:block lg:sticky lg:top-28">
+          {/* Parked at viewport centre rather than under the nav: the rows
+              column is shorter than the section, so a top-anchored panel
+              strands a dead rail beneath itself at the section's end. */}
+          <div className="hidden lg:sticky lg:top-[max(7rem,calc(50vh-13rem))] lg:block">
             <Reveal>
               <div
                 className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-line bg-shelf"
@@ -70,7 +79,7 @@ export default function Work() {
                       (i === active ? "opacity-100" : "opacity-0")
                     }
                   >
-                    <Cover project={p} eager={i === 0} />
+                    <Cover project={p} live={engaged && i === active} />
                   </div>
                 ))}
               </div>
@@ -98,12 +107,18 @@ export default function Work() {
                           href: p.href,
                           target: "_blank",
                           rel: "noreferrer noopener",
-                          onFocus: () => setActive(i),
+                          onFocus: () => {
+                            setActive(i);
+                            setEngaged(true);
+                          },
                         }
                       : {})}
-                    onMouseEnter={() => setActive(i)}
+                    onMouseEnter={() => {
+                      setActive(i);
+                      setEngaged(true);
+                    }}
                     className={
-                      "group block border-b border-line py-8 transition-colors duration-500 sm:py-10 " +
+                      "group block border-b border-line py-8 transition-colors duration-500 sm:py-10 lg:py-14 " +
                       (interactive ? "cursor-pointer" : "")
                     }
                   >
@@ -145,7 +160,7 @@ export default function Work() {
                     {/* Touch and small screens get the cover in the row itself */}
                     <div className="mt-5 overflow-hidden rounded-lg border border-line lg:hidden">
                       <div className="aspect-[4/3] w-full">
-                        <Cover project={p} eager={i === 0} />
+                        <Cover project={p} />
                       </div>
                     </div>
 

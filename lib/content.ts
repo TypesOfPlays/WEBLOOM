@@ -7,8 +7,9 @@
  * each build. If you want more listed (TypeScript, Tailwind, a CMS), add it —
  * but only what you really used.
  *
- * Anything still marked `placeholder: true` or wrapped in <<< >>> is waiting
- * on you. Replace the value, flip the flag, and the placeholder styling goes.
+ * There are no placeholders left. If you add a fact you have not verified,
+ * mark it `placeholder: true` or wrap it in <<< >>> so it renders as visibly
+ * provisional rather than as a claim.
  * ========================================================================== */
 
 export type Schematic = "commerce" | "dashboard" | "editorial" | "product";
@@ -38,7 +39,10 @@ export const socials: { label: string; href: string; placeholder?: boolean }[] =
   [
     { label: "GitHub", href: "https://github.com/TypesOfPlays" },
     { label: "Email", href: "mailto:moankit517@gmail.com" },
-    { label: "LinkedIn", href: "<<<your linkedin url>>>", placeholder: true },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/ankit-mohapatra-8518683a6",
+    },
   ];
 
 export const hero = {
