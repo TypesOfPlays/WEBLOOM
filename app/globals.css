@@ -299,6 +299,36 @@
 
 
 
+
+/* --- Boot aperture -------------------------------------------------------
+   The wordmark is an SVG text used twice: once as a mask that knocks a window
+   out of the void plate, once as a visible mint edge on the same letterforms.
+   transform-box: fill-box makes the scale grow from the word's own centre, so
+   the window opens where the word already is. */
+
+.intro-word {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 8.5vw;
+  text-transform: uppercase;
+  /* The transform origin is computed at runtime from the real glyph box —
+     see Intro.tsx. A percentage cannot express "on the L's stem": the fill
+     box includes descender space the caps never reach, so every percentage
+     guess lands either below the letters or in a gap. */
+  will-change: transform;
+}
+
+@media (max-width: 767px) {
+  .intro-word {
+    font-size: 15vw;
+  }
+}
+
+.intro-edge {
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+
 /* --- The drawn underline -------------------------------------------------
    Mint under the amber word: the two accents the world already owns, and the
    only place they touch. It draws in from the left after the characters have

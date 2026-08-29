@@ -56,7 +56,9 @@ const browser = await puppeteer.launch({
   args: ["--hide-scrollbars", "--force-color-profile=srgb"],
 });
 
-const FRAMES = [500, 1000, 1500, 2100, 2700, 3600, 5200];
+const FRAMES = process.argv.length > 2
+  ? process.argv.slice(2).map(Number)
+  : [500, 1000, 1500, 2100, 2700, 3600, 5200];
 
 for (const at of FRAMES) {
   const page = await browser.newPage();
