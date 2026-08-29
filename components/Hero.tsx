@@ -1,4 +1,5 @@
 import { hero, site } from "@/lib/content";
+import DotList from "./DotList";
 
 export default function Hero() {
   return (
@@ -42,14 +43,18 @@ export default function Hero() {
             <div key={m.k} className="flex flex-col gap-2">
               <dt className="label">{m.k}</dt>
               <dd
-                className={`flex items-center gap-2 text-sm font-medium ${
+                className={`flex items-baseline gap-2 text-sm font-medium ${
                   m.placeholder ? "text-faint italic" : "text-chalk"
                 }`}
               >
                 {m.live && (
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-mint" />
+                  <span className="h-1.5 w-1.5 shrink-0 translate-y-[-1px] rounded-full bg-mint" />
                 )}
-                {m.v}
+                {m.v.includes(" · ") ? (
+                  <DotList items={m.v.split(" · ")} />
+                ) : (
+                  m.v
+                )}
               </dd>
             </div>
           ))}

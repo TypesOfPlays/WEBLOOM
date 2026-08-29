@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { projects, type Project } from "@/lib/content";
 import Schematic from "./Schematic";
 import Reveal from "./Reveal";
+import DotList from "./DotList";
 
 const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -142,9 +143,11 @@ export default function Work() {
                 <span className="text-sm font-medium text-chalk">
                   {projects[active].kind}
                 </span>
-                <span className="label">
-                  {projects[active].stack.join(" · ")}
-                </span>
+                <DotList
+                  items={projects[active].stack}
+                  className="label"
+                  dotClassName="opacity-60"
+                />
               </div>
             </Reveal>
           </div>
@@ -221,9 +224,11 @@ export default function Work() {
                       {p.blurb}
                     </p>
 
-                    <p className="label mt-5 lg:hidden">
-                      {p.stack.join(" · ")}
-                    </p>
+                    <DotList
+                      items={p.stack}
+                      className="label mt-5 lg:hidden"
+                      dotClassName="opacity-60"
+                    />
                   </Row>
                 </Reveal>
               );

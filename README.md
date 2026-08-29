@@ -16,7 +16,7 @@ Still outstanding — the only placeholder left:
 | --- | --- |
 | `socials[]` → LinkedIn | Contact section. Replace the `<<< >>>` URL and delete `placeholder: true`. |
 
-Worth confirming when you get a chance: the `stack` list on each project names only what was detectable from the live build (Next.js, React). If you also used TypeScript, Tailwind, a CMS or anything else, add it — but only what you actually used.
+Each project's `stack` lists Next.js, React and TypeScript. The first two are verifiable from the shipped bundles; TypeScript is there because you confirmed it. Add anything else you actually used (Tailwind, a CMS) — and nothing you did not.
 
 ### Projects
 

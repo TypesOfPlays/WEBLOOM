@@ -3,9 +3,9 @@
  *
  * Nothing in this file invents a client, a metric, a testimonial or a year of
  * experience. Project descriptions were written from the live sites
- * themselves, and the stack lists only name what is actually detectable in
- * each build. If you want more listed (TypeScript, Tailwind, a CMS), add it —
- * but only what you really used.
+ * themselves. Next.js and React are verifiable from each shipped bundle;
+ * TypeScript is there because Ankit confirmed it for all three. Add anything
+ * else you really used — and nothing you did not.
  *
  * There are no placeholders left. If you add a fact you have not verified,
  * mark it `placeholder: true` or wrap it in <<< >>> so it renders as visibly
@@ -56,7 +56,7 @@ export const hero = {
     { k: "Status", v: "Available for work", live: true },
     { k: "Based in", v: site.location },
     { k: "Working", v: "Remote, worldwide" },
-    { k: "Focus", v: "React · Next.js" },
+    { k: "Focus", v: "React · Next.js · TypeScript" },
   ] as { k: string; v: string; live?: boolean; placeholder?: boolean }[],
 };
 
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     kind: "Pathology lab · Kendrapara",
     blurb:
       "A bilingual English–Odia site for a fully automated pathology lab with digital X-ray and ECG. The whole visit is written out step by step — what to bring, what it costs, when the report is ready — so nobody arrives uncertain.",
-    stack: ["Next.js", "React", "Bilingual UI"],
+    stack: ["Next.js", "React", "TypeScript", "Bilingual UI"],
     href: "https://swayamsiddhadiagnostics.in/",
     image: "swayamsiddha-lab",
     schematic: "editorial",
@@ -120,7 +120,7 @@ export const projects: Project[] = [
     kind: "Test directory · Kendrapara",
     blurb:
       "The sibling site for the Old Hospital Road branch. All 73 tests are searchable by the shorthand a doctor actually writes — KFT, LFT, TSH — and the header counts down live to closing time.",
-    stack: ["Next.js", "React", "Client-side search"],
+    stack: ["Next.js", "React", "TypeScript", "Client-side search"],
     href: "https://swayamsiddhadiagnostics.info/",
     image: "swayamsiddha-collection",
     schematic: "product",
@@ -130,7 +130,7 @@ export const projects: Project[] = [
     kind: "Financial advisory · Bhubaneswar",
     blurb:
       "Investments, insurance and tax laid out as numbered chapters, with animated counters and an enquiry form that composes the visitor's WhatsApp message for them before they send it.",
-    stack: ["Next.js", "React", "GitHub Pages"],
+    stack: ["Next.js", "React", "TypeScript", "GitHub Pages"],
     href: "https://typesofplays.github.io/atozfinancialsolutionhub/",
     image: "atoz-financial",
     schematic: "dashboard",
