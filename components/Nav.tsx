@@ -29,7 +29,7 @@ export default function Nav() {
       >
         <a
           href="#top"
-          className="group flex items-center gap-2.5 text-chalk transition-colors hover:text-amber sm:gap-3"
+          className="group -my-2 flex items-center gap-2.5 py-2 text-chalk transition-colors hover:text-amber sm:gap-3"
         >
           {/* The lockup's own wordmark is not used: WEBLOOM is already set in
               Rader beside it, and repeating it reads as a duplicate. */}

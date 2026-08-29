@@ -80,7 +80,7 @@ export default function Contact() {
                   target={s.placeholder ? undefined : "_blank"}
                   rel="noreferrer noopener"
                   className={
-                    "group inline-flex items-center gap-2 text-sm font-medium transition-colors duration-300 " +
+                    "group -my-2 inline-flex items-center gap-2 py-2 text-sm font-medium transition-colors duration-300 " +
                     (s.placeholder
                       ? "cursor-not-allowed italic text-faint"
                       : "cursor-pointer text-mute hover:text-mint")

@@ -27,7 +27,7 @@ export default function Footer() {
 
         <a
           href="#top"
-          className="group inline-flex items-center gap-2 text-sm text-mute transition-colors hover:text-chalk"
+          className="group -my-2 inline-flex items-center gap-2 py-2 text-sm text-mute transition-colors hover:text-chalk"
         >
           Back to top
           <span className="inline-block transition-transform duration-300 group-hover:-translate-y-0.5">
