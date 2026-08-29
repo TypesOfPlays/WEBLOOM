@@ -5,7 +5,6 @@
   --color-void: #05070e;
   --color-shelf: #090d18;
   --color-line: #1a2133;
-  --color-line-soft: #11172553;
 
   /* The only two accents. Amber acts, mint measures. */
   --color-amber: #ffab00;
@@ -122,15 +121,6 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  .rule-x {
-    background-image: linear-gradient(
-      to right,
-      transparent,
-      var(--color-line) 12%,
-      var(--color-line) 88%,
-      transparent
-    );
-  }
 }
 
 /* --- Authored motion --------------------------------------------------- */
