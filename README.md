@@ -6,41 +6,41 @@ Portfolio site for a frontend web developer. Next.js 16 (App Router) + TypeScrip
 
 ---
 
-## Fill in your details
+## Edit the content
 
-Everything you need to change is in one file: **[`lib/content.ts`](lib/content.ts)**.
+Everything you would want to change is in one file: **[`lib/content.ts`](lib/content.ts)**.
 
-Anything wrapped in `<<< >>>` is a placeholder and renders in italic grey on the page. Replace the value and flip the matching `…Placeholder: true` flag to `false` — the placeholder styling disappears on its own.
-
-Still waiting on you:
+Still outstanding — the only placeholder left:
 
 | Field | Where it shows |
 | --- | --- |
-| `site.owner` | About section, "Behind WEBLOOM" |
-| `site.email` | The big contact link |
-| `site.location` | Hero meta row + About |
-| `site.timezone` | Bottom-right of the hero |
-| `socials[]` | Contact section links |
-| `projects[]` | The whole Selected work list |
+| `socials[]` → LinkedIn | Contact section. Replace the `<<< >>>` URL and delete `placeholder: true`. |
+
+Worth confirming when you get a chance: the `stack` list on each project names only what was detectable from the live build (Next.js, React). If you also used TypeScript, Tailwind, a CMS or anything else, add it — but only what you actually used.
 
 ### Projects
 
-The four entries in `projects` are **example shapes, not real work** — each renders a `PLACEHOLDER` badge until you set `placeholder: false`. Replace them with your own:
+The three entries in `projects` are your real, live sites. Adding another:
 
 ```ts
 {
   title: "Client Name",
-  kind: "E-commerce",
+  kind: "Sector · City",
   blurb: "One or two sentences on what it is and what you did.",
-  stack: ["Next.js", "TypeScript", "Stripe"],
-  year: "2025",
-  href: "https://the-live-site.com",   // makes the row clickable
-  schematic: "commerce",               // commerce | dashboard | editorial | product
-  placeholder: false,
+  stack: ["Next.js", "React"],
+  href: "https://the-live-site.com",
+  image: "client-slug",     // omit to fall back to a drawn schematic
+  schematic: "editorial",   // commerce | dashboard | editorial | product
 }
 ```
 
-Project covers are hand-drawn SVG schematics in [`components/Schematic.tsx`](components/Schematic.tsx) rather than screenshots, so nothing on the page can be mistaken for a product that does not exist. Swap them for real screenshots whenever you have them.
+Then add the URL to `scripts/gen-work-shots.mjs` and run it to capture the cover:
+
+```bash
+node scripts/gen-work-shots.mjs
+```
+
+Covers are real screenshots of the live sites, at 1600 and 800 wide. A project with no `image` falls back to a hand-drawn SVG schematic from [`components/Schematic.tsx`](components/Schematic.tsx).
 
 ---
 
@@ -70,10 +70,16 @@ Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/de
 ## Review screenshots
 
 ```bash
-node scripts/shoot.mjs
+npm run build && node scripts/shoot.mjs
 ```
 
-Captures desktop (1440×900) and mobile (390×844) PNGs into `.impeccable/review/`, with animations paused so the captures are deterministic. Requires a local Chromium-based browser and a dev server already running.
+Captures desktop (1440×900) and mobile (390×844) PNGs into `.impeccable/review/`, with animations paused so the captures are deterministic. With no argument it serves the static export in `out/` itself, so the shots are of the shipped build with no dev-only overlay. Pass a URL to shoot a running dev server instead. Requires a local Chromium-based browser.
+
+The aurora field's blurred layers are generated, not committed by hand:
+
+```bash
+node scripts/gen-aurora.mjs
+```
 
 ---
 
@@ -81,7 +87,7 @@ Captures desktop (1440×900) and mobile (390×844) PNGs into `.impeccable/review
 
 - **Type:** Manrope throughout, with Bodoni Moda italic for the single amber accent word.
 - **Palette:** near-black navy ground (`#05070E`), amber `#FFAB00` and mint `#00FFE0` as the only accents.
-- **Motion:** one authored moment — a slow-drifting light field that leans toward the pointer. Built from raw radial gradients with no `filter: blur()`, because a blurred layer that size re-rasterises the whole surface every frame.
+- **Motion:** one authored moment — a slow-drifting light field that leans toward the pointer. Its blur is baked into PNGs at build time rather than applied with `filter: blur()`, because a blurred layer that size re-rasterises the whole surface every frame; the layers only ever transform.
 - **Accessibility:** WCAG AA contrast on the dark ground, visible focus rings, full keyboard operation, and `prefers-reduced-motion` honoured for every animation.
 
 Durable product context lives in [`PRODUCT.md`](PRODUCT.md).
