@@ -329,6 +329,89 @@
   paint-order: stroke;
 }
 
+
+/* --- The living mark ----------------------------------------------------
+   Signals running through the logo's own antennae and drips. Each trace is a
+   dash that runs, rests, and runs again on its own offset, so the group never
+   pulses in unison — synchronised blinking reads as a loading state. */
+
+@keyframes trace-run {
+  0% {
+    stroke-dashoffset: 60;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  55% {
+    stroke-dashoffset: -60;
+    opacity: 1;
+  }
+  70%,
+  100% {
+    stroke-dashoffset: -60;
+    opacity: 0;
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes mark-breathe {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.32;
+  }
+}
+
+.trace {
+  stroke-dasharray: 26 60;
+  animation: trace-run 7s var(--ease-swift) infinite;
+}
+
+.trace-2 { animation-delay: 0.9s; }
+.trace-3 { animation-delay: 2.1s; }
+.trace-4 { animation-delay: 1.4s; }
+.trace-5 { animation-delay: 3.2s; }
+.trace-6 { animation-delay: 2.6s; }
+
+.node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-pulse 4.5s ease-in-out infinite;
+}
+
+.node-2 { animation-delay: 1.1s; }
+.node-3 { animation-delay: 2.4s; }
+
+.mark-breathe {
+  animation: mark-breathe 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trace,
+  .node,
+  .mark-breathe {
+    animation: none;
+  }
+  .trace {
+    stroke-dasharray: none;
+    opacity: 0.45;
+  }
+}
+
 /* --- The drawn underline -------------------------------------------------
    Mint under the amber word: the two accents the world already owns, and the
    only place they touch. It draws in from the left after the characters have

@@ -67,6 +67,22 @@ export const about = {
     "WEBLOOM is a one-person frontend practice run from Kendrapara. I take a business from a rough idea, a Figma file or an existing broken site, and turn it into something that works on a five-year-old phone and reads clearly to a person who has never heard of your company.",
     "The work so far has been for real local businesses — a pathology lab, a collection centre, a financial advisory firm — where the visitor is usually anxious, in a hurry, or both. That shapes how I build: plain language first, bilingual where the audience needs it, and no interface flourish that gets in the way of a phone number.",
   ],
+  /* Each of these restates something the body copy above already establishes.
+     Nothing here is a new claim. */
+  practice: [
+    {
+      k: "Direct",
+      v: "You talk to the person writing the code. No account layer.",
+    },
+    {
+      k: "Plain language",
+      v: "Copy a customer can act on, not vocabulary that impresses me.",
+    },
+    {
+      k: "Bilingual",
+      v: "English and Odia where the audience actually needs both.",
+    },
+  ],
   capabilities: [
     {
       title: "Interface engineering",

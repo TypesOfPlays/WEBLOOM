@@ -37,6 +37,38 @@ export default function About() {
                   {site.location}
                 </span>
               </p>
+
+              <dl className="mt-4">
+                {about.practice.map((p) => (
+                  <div
+                    key={p.k}
+                    className="border-t border-line py-4 last:border-b"
+                  >
+                    <dt className="label">{p.k}</dt>
+                    <dd className="mt-2 max-w-[38ch] text-sm leading-relaxed text-mute">
+                      {p.v}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              <a
+                href="#contact"
+                className="group -my-2 inline-flex w-fit items-center gap-2 py-2 text-sm font-medium text-chalk transition-colors duration-300 hover:text-amber"
+              >
+                Start a project
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  <svg width="13" height="13" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path
+                      d="M4 14L14 4M14 4H6.5M14 4v7.5"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </a>
             </div>
           </Reveal>
 

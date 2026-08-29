@@ -1,6 +1,7 @@
 import { hero, site } from "@/lib/content";
 import DotList from "./DotList";
 import KineticText from "./KineticText";
+import LivingMark from "./LivingMark";
 
 export default function Hero() {
   return (
@@ -8,6 +9,8 @@ export default function Hero() {
       id="top"
       className="relative z-10 flex min-h-[100svh] flex-col justify-center px-5 pb-7 pt-28 sm:px-8 sm:pb-9 lg:justify-end lg:px-12"
     >
+      <LivingMark />
+
       <div className="mx-auto w-full max-w-[1400px]">
         {site.availability.open && (
           <span className="mb-7 inline-flex w-fit items-center gap-2.5 rounded-full border border-line bg-shelf/60 py-2 pl-3 pr-4 backdrop-blur md:hidden">
