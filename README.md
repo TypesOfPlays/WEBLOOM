@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WEBLOOM
 
-## Getting Started
+Portfolio site for a frontend web developer. Next.js 16 (App Router) + TypeScript + Tailwind CSS v4, shipped as a static export to GitHub Pages.
 
-First, run the development server:
+**Live:** https://typesofplays.github.io/WEBLOOM
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Fill in your details
+
+Everything you need to change is in one file: **[`lib/content.ts`](lib/content.ts)**.
+
+Anything wrapped in `<<< >>>` is a placeholder and renders in italic grey on the page. Replace the value and flip the matching `…Placeholder: true` flag to `false` — the placeholder styling disappears on its own.
+
+Still waiting on you:
+
+| Field | Where it shows |
+| --- | --- |
+| `site.owner` | About section, "Behind WEBLOOM" |
+| `site.email` | The big contact link |
+| `site.location` | Hero meta row + About |
+| `site.timezone` | Bottom-right of the hero |
+| `socials[]` | Contact section links |
+| `projects[]` | The whole Selected work list |
+
+### Projects
+
+The four entries in `projects` are **example shapes, not real work** — each renders a `PLACEHOLDER` badge until you set `placeholder: false`. Replace them with your own:
+
+```ts
+{
+  title: "Client Name",
+  kind: "E-commerce",
+  blurb: "One or two sentences on what it is and what you did.",
+  stack: ["Next.js", "TypeScript", "Stripe"],
+  year: "2025",
+  href: "https://the-live-site.com",   // makes the row clickable
+  schematic: "commerce",               // commerce | dashboard | editorial | product
+  placeholder: false,
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Project covers are hand-drawn SVG schematics in [`components/Schematic.tsx`](components/Schematic.tsx) rather than screenshots, so nothing on the page can be mistaken for a product that does not exist. Swap them for real screenshots whenever you have them.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Develop
 
-## Learn More
+```bash
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open http://localhost:3000.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+```
 
-## Deploy on Vercel
+Outputs a static site to `out/`. Locally this builds at the root path; the deploy workflow sets `GITHUB_PAGES=true` so the production build gets the `/WEBLOOM` base path GitHub Pages needs.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the export and publishes it to GitHub Pages.
+
+**One-time setup:** in the repository, go to **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
+
+## Review screenshots
+
+```bash
+node scripts/shoot.mjs
+```
+
+Captures desktop (1440×900) and mobile (390×844) PNGs into `.impeccable/review/`, with animations paused so the captures are deterministic. Requires a local Chromium-based browser and a dev server already running.
+
+---
+
+## Design notes
+
+- **Type:** Manrope throughout, with Bodoni Moda italic for the single amber accent word.
+- **Palette:** near-black navy ground (`#05070E`), amber `#FFAB00` and mint `#00FFE0` as the only accents.
+- **Motion:** one authored moment — a slow-drifting light field that leans toward the pointer. Built from raw radial gradients with no `filter: blur()`, because a blurred layer that size re-rasterises the whole surface every frame.
+- **Accessibility:** WCAG AA contrast on the dark ground, visible focus rings, full keyboard operation, and `prefers-reduced-motion` honoured for every animation.
+
+Durable product context lives in [`PRODUCT.md`](PRODUCT.md).

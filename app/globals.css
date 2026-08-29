@@ -1,26 +1,270 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Ground — deep navy-black, never pure #000 (OLED smear + halation on glow) */
+  --color-void: #05070e;
+  --color-shelf: #090d18;
+  --color-line: #1a2133;
+  --color-line-soft: #11172553;
+
+  /* The only two accents. Amber acts, mint measures. */
+  --color-amber: #ffab00;
+  --color-mint: #00ffe0;
+
+  /* Text tinted from the ground's hue — never neutral gray */
+  --color-chalk: #eef2fa;
+  --color-mute: #929fba;
+  --color-faint: #5d6987;
+
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-accent: var(--font-bodoni), ui-serif, Georgia, serif;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-swift: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-void);
+    color: var(--color-chalk);
+    font-family: var(--font-display);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* --- Browser surfaces: the parts we did not draw still carry the design --- */
+  ::selection {
+    background-color: var(--color-amber);
+    color: #05070e;
+  }
+
+  ::placeholder {
+    color: var(--color-faint);
+  }
+
+  * {
+    caret-color: var(--color-mint);
+  }
+
+  html {
+    scrollbar-color: var(--color-line) var(--color-void);
+    scrollbar-width: thin;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line);
+    border: 3px solid var(--color-void);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-faint);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-mint);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  a {
+    text-underline-offset: 0.28em;
+    text-decoration-thickness: 1px;
+  }
+
+  /* Tabular data (years, indices) never wobbles */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .label {
+    font-size: 0.6875rem;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--color-faint);
+  }
+
+  .accent-italic {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-amber);
+    letter-spacing: -0.01em;
+  }
+
+  /* Film grain over the whole ground — kills gradient banding on the aurora */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.032;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .rule-x {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      var(--color-line) 12%,
+      var(--color-line) 88%,
+      transparent
+    );
+  }
+}
+
+/* --- Authored motion --------------------------------------------------- */
+
+@keyframes drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6vw, -4vh, 0) scale(1.18);
+  }
+}
+
+@keyframes drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate3d(-7vw, 5vh, 0) scale(0.92);
+  }
+}
+
+@keyframes drift-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+  50% {
+    transform: translate3d(4vw, 6vh, 0) scale(1.25);
+  }
+}
+
+@keyframes sweep-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(320%);
+  }
+}
+
+.drift-a {
+  animation: drift-a 26s var(--ease-swift) infinite;
+}
+.drift-b {
+  animation: drift-b 34s var(--ease-swift) infinite;
+}
+.drift-c {
+  animation: drift-c 30s var(--ease-swift) infinite;
+}
+
+/* Scroll reveal — content is visible by default, JS opts it into hiding */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.js .reveal.shown {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.9s var(--ease-expo),
+    transform 1.05s var(--ease-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+
+/* --- Hero display type -------------------------------------------------- */
+
+.hero-type {
+  font-size: clamp(2.9rem, 11.4vw, 9.25rem);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.hero-type .accent-italic {
+  letter-spacing: -0.02em;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(112%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.js .hero-line {
+  transform: translateY(112%);
+  animation: rise 1.05s var(--ease-expo) 0.12s forwards;
+}
+
+.js .hero-line-2 {
+  animation-delay: 0.24s;
+}
+
+.scroll-hint span {
+  animation: sweep-down 2.4s var(--ease-expo) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .drift-a,
+  .drift-b,
+  .drift-c,
+  .scroll-hint span {
+    animation: none !important;
+  }
+
+  .js .hero-line,
+  .js .hero-line-2 {
+    transform: none;
+    animation: none;
+  }
+
+  .js .reveal,
+  .js .reveal.shown {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
