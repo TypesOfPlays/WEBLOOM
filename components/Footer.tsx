@@ -1,10 +1,20 @@
 import { site } from "@/lib/content";
 
+const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export default function Footer() {
   return (
     <footer className="relative z-10 px-5 pb-10 sm:px-8 lg:px-12">
       <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-6 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          <img
+            src={`${bp}/brand/webloom-mark-compact.png`}
+            alt=""
+            aria-hidden="true"
+            width={190}
+            height={187}
+            className="h-5 w-auto"
+          />
           <span className="font-display text-[0.8rem] font-extrabold uppercase tracking-[0.3em] text-chalk">
             {site.name}
           </span>

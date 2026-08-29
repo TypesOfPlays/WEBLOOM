@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { nav, site } from "@/lib/content";
 
+const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export default function Nav() {
   const [stuck, setStuck] = useState(false);
 
@@ -27,10 +29,22 @@ export default function Nav() {
       >
         <a
           href="#top"
-          className="group flex items-baseline gap-2 font-display text-[0.8rem] font-extrabold uppercase tracking-[0.3em] text-chalk transition-colors hover:text-amber sm:text-sm"
+          className="group flex items-center gap-2.5 text-chalk transition-colors hover:text-amber sm:gap-3"
         >
-          {site.name}
-          <span className="h-1 w-1 rounded-full bg-mint transition-transform duration-300 group-hover:scale-[2.2]" />
+          {/* The lockup's own wordmark is not used: WEBLOOM is already set in
+              Rader beside it, and repeating it reads as a duplicate. */}
+          <img
+            src={`${bp}/brand/webloom-mark-compact.png`}
+            alt=""
+            aria-hidden="true"
+            width={190}
+            height={187}
+            className="h-5 w-auto transition-transform duration-500 ease-out group-hover:scale-105 sm:h-6"
+          />
+          <span className="flex items-baseline gap-2 font-display text-[0.8rem] font-extrabold uppercase tracking-[0.3em] sm:text-sm">
+            {site.name}
+            <span className="h-1 w-1 rounded-full bg-mint transition-transform duration-300 group-hover:scale-[2.2]" />
+          </span>
         </a>
 
         <div className="flex items-center gap-5 sm:gap-9">
