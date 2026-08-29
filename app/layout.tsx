@@ -5,15 +5,20 @@ import { site } from "@/lib/content";
 
 const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-manrope",
   display: "swap",
 });
 
+/**
+ * Variable, with the optical-size axis exposed. A didone's whole character is
+ * the hairline-to-stem contrast, and that only survives when opsz tracks the
+ * rendered size — at display sizes we push it to 96 in CSS.
+ */
 const bodoni = Bodoni_Moda({
   subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["italic"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
   variable: "--font-bodoni",
   display: "swap",
 });

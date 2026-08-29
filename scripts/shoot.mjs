@@ -106,14 +106,14 @@ for (const vp of VIEWPORTS) {
       el.style.animationPlayState = "paused";
       el.style.animationDelay = "-13s";
     });
-    document.querySelectorAll(".hero-line").forEach((el) => {
-      el.style.animation = "none";
+    document.querySelectorAll(".k-char").forEach((el) => {
       el.style.transform = "none";
     });
     window.scrollTo(0, 0);
   });
 
-  await new Promise((r) => setTimeout(r, 1200));
+  // the GPU field fades in over roughly 1.4s; capture after it settles
+  await new Promise((r) => setTimeout(r, Number(process.env.SHOOT_WAIT ?? 2800)));
 
   await page.screenshot({ path: `${OUT}/${vp.name}-fold.png` });
   await page.screenshot({ path: `${OUT}/${vp.name}.png`, fullPage: true });

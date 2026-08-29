@@ -5,6 +5,7 @@ import { projects, type Project } from "@/lib/content";
 import Schematic from "./Schematic";
 import Reveal from "./Reveal";
 import DotList from "./DotList";
+import Tilt from "./Tilt";
 
 const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -97,7 +98,7 @@ export default function Work() {
       <div className="mx-auto w-full max-w-[1400px]">
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4 border-b border-line pb-8">
-            <h2 className="text-4xl font-semibold tracking-[-0.035em] text-chalk sm:text-6xl lg:text-7xl">
+            <h2 className="display display-lg text-chalk">
               Selected work
             </h2>
             <p className="max-w-[34ch] text-sm leading-relaxed text-mute">
@@ -120,6 +121,7 @@ export default function Work() {
               strands a dead rail beneath itself at the section's end. */}
           <div className="hidden lg:sticky lg:top-[max(7rem,calc(50vh-13rem))] lg:block">
             <Reveal>
+              <Tilt max={7.5} lift={30}>
               <div
                 className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-line bg-shelf"
                 style={{
@@ -139,6 +141,7 @@ export default function Work() {
                   </div>
                 ))}
               </div>
+              </Tilt>
               <div className="mt-5 flex flex-col gap-2 border-t border-line pt-4">
                 <span className="text-sm font-medium text-chalk">
                   {projects[active].kind}
@@ -179,7 +182,7 @@ export default function Work() {
                     }
                   >
                     <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
-                      <h3 className="flex flex-wrap items-center gap-x-3 gap-y-2 text-2xl font-semibold tracking-[-0.03em] text-chalk transition-colors duration-500 group-hover:text-amber group-focus-visible:text-amber sm:text-3xl lg:text-[2.5rem]">
+                      <h3 className="display flex flex-wrap items-center gap-x-3 gap-y-2 text-[1.75rem] text-chalk transition-colors duration-500 group-hover:text-amber group-focus-visible:text-amber sm:text-4xl lg:text-[3rem]">
                         {p.title}
                         {p.placeholder && (
                           <span className="rounded-full border border-amber/45 px-3 py-1 text-[0.6875rem] font-medium uppercase leading-none tracking-[0.22em] text-amber">

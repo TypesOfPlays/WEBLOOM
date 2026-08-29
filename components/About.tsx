@@ -9,7 +9,7 @@ export default function About() {
     >
       <div className="mx-auto w-full max-w-[1400px]">
         <Reveal>
-          <p className="max-w-[20ch] text-3xl font-semibold leading-[1.12] tracking-[-0.035em] text-chalk sm:max-w-[24ch] sm:text-5xl lg:max-w-[26ch] lg:text-[4rem]">
+          <p className="display max-w-[22ch] text-[2.1rem] leading-[1.06] text-chalk sm:max-w-[26ch] sm:text-5xl lg:max-w-[28ch] lg:text-[4.4rem]">
             {about.statement}
           </p>
         </Reveal>
@@ -20,7 +20,7 @@ export default function About() {
               <span className="h-px w-full bg-line" />
               <p
                 className={
-                  "text-2xl font-medium tracking-[-0.02em] sm:text-3xl " +
+                  "display text-3xl sm:text-4xl " +
                   (site.ownerPlaceholder ? "italic text-faint" : "text-chalk")
                 }
               >

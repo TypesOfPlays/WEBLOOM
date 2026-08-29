@@ -16,7 +16,10 @@
   /* 4.8:1 on --color-void; carries labels, years and stack lists */
   --color-faint: #6f7c9c;
 
-  --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  /* Didone display, grotesk body. The hairline/stem contrast only reads at
+     size, so --font-display is never used below ~1.5rem. */
+  --font-display: var(--font-bodoni), ui-serif, "Didot", Georgia, serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-accent: var(--font-bodoni), ui-serif, Georgia, serif;
 
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -32,7 +35,7 @@
   body {
     background-color: var(--color-void);
     color: var(--color-chalk);
-    font-family: var(--font-display);
+    font-family: var(--font-sans);
     font-synthesis-weight: none;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -105,9 +108,11 @@
   .accent-italic {
     font-family: var(--font-accent);
     font-style: italic;
-    font-weight: 400;
     color: var(--color-amber);
-    letter-spacing: -0.01em;
+  }
+
+  .font-sans-ui {
+    font-family: var(--font-sans);
   }
 
   /* Film grain over the whole ground — kills gradient banding on the aurora */
@@ -219,6 +224,26 @@
   }
 }
 
+
+/* --- Live shader field ---------------------------------------------------
+   When the GPU field mounts it stamps `shader-live` on <html> and the baked
+   PNG layers cross-fade out beneath it. The vignette and floor stay: they do
+   legibility work, not decoration. */
+
+.aurora-blue,
+.aurora-mint,
+.aurora-amber,
+.aurora-cursor {
+  transition: opacity 1.6s var(--ease-expo);
+}
+
+.shader-live .aurora-blue,
+.shader-live .aurora-mint,
+.shader-live .aurora-amber,
+.shader-live .aurora-cursor {
+  opacity: 0 !important;
+}
+
 /* --- Aurora field geometry ---------------------------------------------
    Positioned per breakpoint: the desktop composition pushes the blue body
    far off the top-left, which on a 390px viewport would place it entirely
@@ -269,35 +294,129 @@
   }
 }
 
+
+
+/* --- Custom cursor -------------------------------------------------------
+   Difference blend so one cursor works over both the dark ground and the
+   light project covers. The native cursor is hidden only once the script has
+   actually mounted and added `cursor-custom`. */
+
+.cursor-ring,
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-ring.is-live,
+.cursor-dot.is-live {
+  opacity: 1;
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(238, 242, 250, 0.6);
+  will-change: transform;
+  transition:
+    border-color 0.35s var(--ease-expo),
+    background-color 0.35s var(--ease-expo),
+    opacity 0.3s ease;
+}
+
+.cursor-ring[data-on="true"] {
+  border-color: var(--color-amber);
+  background-color: rgba(255, 171, 0, 0.1);
+}
+
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--color-chalk);
+}
+
+html.cursor-custom,
+html.cursor-custom * {
+  cursor: none !important;
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-ring,
+  .cursor-dot {
+    display: none;
+  }
+}
+
+/* --- Kinetic display type ------------------------------------------------
+   Each word is its own mask so the effect survives any wrap. The padding /
+   negative-margin pair gives descenders room inside the mask without
+   shifting the baseline. */
+
+.k-root {
+  display: inline;
+}
+
+.k-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+  margin-right: 0.24em;
+  perspective: 700px;
+}
+
+.k-char {
+  display: inline-block;
+  will-change: transform;
+}
+
+.js .k-root .k-char {
+  transform: translateY(108%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .k-root .k-char {
+    transform: none;
+  }
+}
+
 /* --- Hero display type -------------------------------------------------- */
 
-.hero-type {
-  font-size: clamp(3.35rem, 11.4vw, 9.25rem);
-  line-height: 0.86;
-  letter-spacing: -0.045em;
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variation-settings: "opsz" 96;
+  letter-spacing: -0.015em;
+  line-height: 0.92;
   text-wrap: balance;
 }
 
-.hero-type .accent-italic {
-  letter-spacing: -0.02em;
+.display-xl {
+  font-size: clamp(3.6rem, 12.5vw, 11.5rem);
+  line-height: 0.84;
+  letter-spacing: -0.025em;
 }
 
-@keyframes rise {
-  from {
-    transform: translateY(112%);
-  }
-  to {
-    transform: translateY(0);
-  }
+.display-lg {
+  font-size: clamp(2.6rem, 7vw, 6rem);
+  line-height: 0.9;
 }
 
-.js .hero-line {
-  transform: translateY(112%);
-  animation: rise 1.05s var(--ease-expo) 0.12s forwards;
+.hero-type {
+  text-wrap: balance;
 }
 
-.js .hero-line-2 {
-  animation-delay: 0.24s;
+.display .accent-italic {
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 .scroll-hint span {
@@ -314,12 +433,6 @@
   .drift-c,
   .scroll-hint span {
     animation: none !important;
-  }
-
-  .js .hero-line,
-  .js .hero-line-2 {
-    transform: none;
-    animation: none;
   }
 
   .js .reveal,

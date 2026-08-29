@@ -1,5 +1,7 @@
 import { contact, site, socials } from "@/lib/content";
 import Reveal from "./Reveal";
+import KineticText from "./KineticText";
+import Magnetic from "./Magnetic";
 
 export default function Contact() {
   const mailto =
@@ -15,10 +17,14 @@ export default function Contact() {
     >
       <div className="mx-auto w-full max-w-[1400px]">
         <Reveal>
-          <h2 className="text-[clamp(2.5rem,8.5vw,7rem)] font-semibold leading-[0.92] tracking-[-0.045em] text-chalk">
-            {contact.headline[0]}
-            <br />
-            <span className="accent-italic">{contact.headline[1]}</span>
+          <h2 className="display text-[clamp(2.9rem,9vw,8rem)] leading-[0.9] text-chalk">
+            <KineticText
+              trigger="scroll"
+              segments={[
+                { text: contact.headline[0] },
+                { text: contact.headline[1], accent: true },
+              ]}
+            />
           </h2>
         </Reveal>
 
@@ -34,7 +40,8 @@ export default function Contact() {
               href={mailto}
               className="group inline-flex max-w-full items-center gap-4 sm:gap-6"
             >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber text-void transition-transform duration-500 ease-out group-hover:scale-110 sm:h-16 sm:w-16">
+              <Magnetic strength={0.45} radius={130} className="shrink-0">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-amber text-void transition-transform duration-500 ease-out group-hover:scale-110 sm:h-16 sm:w-16">
                 <svg
                   width="20"
                   height="20"
@@ -50,7 +57,8 @@ export default function Contact() {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </span>
+                </span>
+              </Magnetic>
               <span
                 className={
                   "min-w-0 break-all text-xl font-medium tracking-[-0.02em] underline decoration-line underline-offset-[0.3em] transition-colors duration-300 group-hover:decoration-amber sm:text-3xl lg:text-4xl " +

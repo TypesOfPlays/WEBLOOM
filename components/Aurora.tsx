@@ -110,21 +110,6 @@ export default function Aurora() {
         <Blob name="blue" className="aurora-cursor" opacity={0.32} />
       </div>
 
-      {/* Vignette + floor: keeps text off the brightest part of the field */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(125% 88% at 50% 2%, transparent 30%, rgba(5,7,14,0.42) 66%, rgba(5,7,14,0.86) 100%)",
-        }}
-      />
-      <div
-        className="absolute inset-x-0 bottom-0 h-[42vh]"
-        style={{
-          background:
-            "linear-gradient(to bottom, transparent, rgba(5,7,14,0.8) 58%, #05070e)",
-        }}
-      />
     </div>
   );
 }

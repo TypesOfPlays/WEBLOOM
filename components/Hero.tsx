@@ -1,5 +1,6 @@
 import { hero, site } from "@/lib/content";
 import DotList from "./DotList";
+import KineticText from "./KineticText";
 
 export default function Hero() {
   return (
@@ -20,18 +21,15 @@ export default function Hero() {
           </span>
         )}
 
-        <h1 className="hero-type font-display font-semibold text-chalk">
-          <span className="block overflow-hidden">
-            <span className="hero-line block">
-              {hero.lineOne}{" "}
-              <em className="accent-italic">
-                {hero.accent}
-              </em>
-            </span>
-          </span>
-          <span className="block overflow-hidden">
-            <span className="hero-line hero-line-2 block">{hero.lineTwo}</span>
-          </span>
+        <h1 className="display display-xl text-chalk">
+          <KineticText
+            delay={0.55}
+            segments={[
+              { text: hero.lineOne.join(" ") },
+              { text: hero.accent, accent: true },
+              { text: hero.lineTwo.join(" ") },
+            ]}
+          />
         </h1>
 
         <p className="mt-7 max-w-[46ch] text-base leading-relaxed text-mute sm:mt-8 sm:text-lg">
