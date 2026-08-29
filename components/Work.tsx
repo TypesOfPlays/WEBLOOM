@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { projects, type Project } from "@/lib/content";
 import Schematic from "./Schematic";
 import Reveal from "./Reveal";
@@ -35,6 +35,58 @@ function Cover({ project, live }: { project: Project; live?: boolean }) {
 export default function Work() {
   const [active, setActive] = useState(0);
   const [engaged, setEngaged] = useState(false);
+  const listRef = useRef<HTMLUListElement>(null);
+  const engagedRef = useRef(false);
+
+  const engage = (i: number) => {
+    engagedRef.current = true;
+    setEngaged(true);
+    setActive(i);
+  };
+
+  /**
+   * Follow the reading position. Without this the cover sits on project one
+   * while a visitor scrolls past project three — most people scroll without
+   * ever pointing at a row, and a picture of the wrong project is worse than
+   * no picture. Hover and focus still override.
+   */
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+
+    const wide = window.matchMedia("(min-width: 1024px)");
+    let raf = 0;
+
+    const nearest = () => {
+      raf = 0;
+      if (engagedRef.current || !wide.matches) return;
+      const mid = window.innerHeight / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      Array.from(list.children).forEach((el, i) => {
+        const r = el.getBoundingClientRect();
+        const d = Math.abs(r.top + r.height / 2 - mid);
+        if (d < bestDist) {
+          bestDist = d;
+          best = i;
+        }
+      });
+      setActive(best);
+    };
+
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(nearest);
+    };
+
+    nearest();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
     <section
@@ -56,7 +108,10 @@ export default function Work() {
 
         <div
           className="mt-12 grid gap-x-16 lg:grid-cols-[minmax(0,30rem)_minmax(0,1fr)] lg:items-start"
-          onMouseLeave={() => setEngaged(false)}
+          onMouseLeave={() => {
+            engagedRef.current = false;
+            setEngaged(false);
+          }}
         >
           {/* Sticky cover — desktop only; the rows carry their own on touch */}
           {/* Parked at viewport centre rather than under the nav: the rows
@@ -83,7 +138,7 @@ export default function Work() {
                   </div>
                 ))}
               </div>
-              <div className="mt-5 flex items-baseline justify-between gap-6 border-t border-line pt-4">
+              <div className="mt-5 flex flex-col gap-2 border-t border-line pt-4">
                 <span className="text-sm font-medium text-chalk">
                   {projects[active].kind}
                 </span>
@@ -94,7 +149,7 @@ export default function Work() {
             </Reveal>
           </div>
 
-          <ul>
+          <ul ref={listRef}>
             {projects.map((p, i) => {
               const interactive = Boolean(p.href);
               const Row = interactive ? "a" : "div";
@@ -107,16 +162,14 @@ export default function Work() {
                           href: p.href,
                           target: "_blank",
                           rel: "noreferrer noopener",
-                          onFocus: () => {
-                            setActive(i);
-                            setEngaged(true);
+                          onFocus: () => engage(i),
+                          onBlur: () => {
+                            engagedRef.current = false;
+                            setEngaged(false);
                           },
                         }
                       : {})}
-                    onMouseEnter={() => {
-                      setActive(i);
-                      setEngaged(true);
-                    }}
+                    onMouseEnter={() => engage(i)}
                     className={
                       "group block border-b border-line py-8 transition-colors duration-500 sm:py-10 lg:py-14 " +
                       (interactive ? "cursor-pointer" : "")
