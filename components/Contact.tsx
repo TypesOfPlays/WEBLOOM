@@ -1,6 +1,7 @@
 import { contact, site, socials } from "@/lib/content";
 import Reveal from "./Reveal";
 import KineticText from "./KineticText";
+import CopyEmail from "./CopyEmail";
 
 export default function Contact() {
   const mailto =
@@ -67,6 +68,16 @@ export default function Contact() {
                 {site.email}
               </span>
             </a>
+
+            {/* mailto only fires when a default mail client is registered.
+                Plenty of visitors live in webmail and would otherwise click
+                the address and get nothing at all. */}
+            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <CopyEmail email={site.email} />
+              <p className="text-sm text-faint">
+                No mail app? Copy the address instead.
+              </p>
+            </div>
           </div>
         </Reveal>
 
