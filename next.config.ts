@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
   basePath: isPages ? repo : "",
   assetPrefix: isPages ? repo : undefined,
   images: { unoptimized: true },
+  env: { NEXT_PUBLIC_BASE_PATH: isPages ? repo : "" },
 };
 
 export default nextConfig;

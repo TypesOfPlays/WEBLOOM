@@ -17,10 +17,7 @@ export default function About() {
         <div className="mt-16 grid gap-x-16 gap-y-14 border-t border-line pt-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
           <Reveal>
             <div className="flex flex-col gap-6">
-              <div className="flex items-center gap-4">
-                <span className="label">Behind WEBLOOM</span>
-                <span className="h-px flex-1 bg-line" />
-              </div>
+              <span className="h-px w-full bg-line" />
               <p
                 className={
                   "text-2xl font-medium tracking-[-0.02em] sm:text-3xl " +

@@ -1,35 +1,32 @@
 /* ============================================================================
  * WEBLOOM — every word on the site lives here.
  *
- * Anything marked `placeholder: true` or wrapped in <<< >>> is NOT real and is
- * waiting on you. Replace the value, flip the flag to false, and the badge and
- * the "to be confirmed" styling disappear on their own.
- *
  * Nothing in this file invents a client, a metric, a testimonial or a year of
- * experience. That is deliberate — you have to be able to defend every line of
- * this page in a sales call.
+ * experience. Project descriptions were written from the live sites
+ * themselves, and the stack lists only name what is actually detectable in
+ * each build. If you want more listed (TypeScript, Tailwind, a CMS), add it —
+ * but only what you really used.
+ *
+ * Anything still marked `placeholder: true` or wrapped in <<< >>> is waiting
+ * on you. Replace the value, flip the flag, and the placeholder styling goes.
  * ========================================================================== */
 
 export type Schematic = "commerce" | "dashboard" | "editorial" | "product";
 
 export const site = {
   name: "WEBLOOM",
-  /** TODO: your real name — shown in About and the footer. */
-  owner: "<<<Your Name>>>",
-  ownerPlaceholder: true,
+  owner: "Ankit Mohapatra",
+  ownerPlaceholder: false,
   role: "Frontend Developer",
   url: "https://typesofplays.github.io/WEBLOOM",
   description:
-    "WEBLOOM is the studio practice of a frontend developer building fast, considered interfaces for the web — React, Next.js and TypeScript.",
-  /** TODO: the address you actually want strangers emailing. */
-  email: "<<<you@example.com>>>",
-  emailPlaceholder: true,
-  /** TODO: e.g. "Mumbai, India" */
-  location: "<<<Your City>>>",
-  locationPlaceholder: true,
-  /** TODO: e.g. "GMT+5:30" */
-  timezone: "<<<GMT+0>>>",
-  timezonePlaceholder: true,
+    "WEBLOOM is the practice of Ankit Mohapatra, a frontend developer in Kendrapara building fast, considered websites for real businesses — React, Next.js and static-first delivery.",
+  email: "moankit517@gmail.com",
+  emailPlaceholder: false,
+  location: "Kendrapara, India",
+  locationPlaceholder: false,
+  timezone: "GMT+5:30",
+  timezonePlaceholder: false,
   availability: {
     open: true,
     label: "Available for freelance",
@@ -40,9 +37,8 @@ export const site = {
 export const socials: { label: string; href: string; placeholder?: boolean }[] =
   [
     { label: "GitHub", href: "https://github.com/TypesOfPlays" },
+    { label: "Email", href: "mailto:moankit517@gmail.com" },
     { label: "LinkedIn", href: "<<<your linkedin url>>>", placeholder: true },
-    { label: "X", href: "<<<your x url>>>", placeholder: true },
-    { label: "Read.cv", href: "<<<your cv url>>>", placeholder: true },
   ];
 
 export const hero = {
@@ -54,18 +50,18 @@ export const hero = {
     "I build the part of the product people actually touch — interfaces that load fast, read clearly and feel deliberate on every screen.",
   meta: [
     { k: "Status", v: "Available for work", live: true },
-    { k: "Based in", v: site.location, placeholder: site.locationPlaceholder },
+    { k: "Based in", v: site.location },
     { k: "Working", v: "Remote, worldwide" },
-    { k: "Focus", v: "React · Next.js · TypeScript" },
-  ],
+    { k: "Focus", v: "React · Next.js" },
+  ] as { k: string; v: string; live?: boolean; placeholder?: boolean }[],
 };
 
 export const about = {
   statement:
     "A site is the first thing a client experiences, and usually the only thing they judge you by. I build them like that matters.",
   body: [
-    "WEBLOOM is a one-person frontend practice. I take a product from a rough idea, a Figma file or an existing broken site, and turn it into something that loads in under a second, works on a five-year-old phone, and reads clearly to a person who has never heard of your company.",
-    "The work is mostly React, Next.js and TypeScript, with a lot of attention paid to the things people notice without being able to name — how type is set, how motion behaves, what happens on the slow connection, what happens when there is no data yet.",
+    "WEBLOOM is a one-person frontend practice run from Kendrapara. I take a business from a rough idea, a Figma file or an existing broken site, and turn it into something that works on a five-year-old phone and reads clearly to a person who has never heard of your company.",
+    "The work so far has been for real local businesses — a pathology lab, a collection centre, a financial advisory firm — where the visitor is usually anxious, in a hurry, or both. That shapes how I build: plain language first, bilingual where the audience needs it, and no interface flourish that gets in the way of a phone number.",
   ],
   capabilities: [
     {
@@ -96,66 +92,51 @@ export type Project = {
   kind: string;
   blurb: string;
   stack: string[];
-  year: string;
   href?: string;
-  repo?: string;
+  /** basename in public/work/ — regenerate with: node scripts/gen-work-shots.mjs */
+  image?: string;
+  /** fallback cover when there is no screenshot yet */
   schematic: Schematic;
-  /** true = example entry, shows a PLACEHOLDER badge. Flip to false when real. */
-  placeholder: boolean;
+  placeholder?: boolean;
 };
 
-/* ---------------------------------------------------------------------------
- * These four are EXAMPLE ENTRIES, drawn as schematics rather than fake
- * screenshots so nothing here can be mistaken for a real shipped product.
- * Send me your real projects and these get replaced wholesale.
- * ------------------------------------------------------------------------- */
 export const projects: Project[] = [
   {
-    title: "Storefront",
-    kind: "E-commerce",
+    title: "Swayamsiddha Diagnostics",
+    kind: "Pathology lab · Kendrapara",
     blurb:
-      "A headless shop front — product grid, variant picker, cart drawer and a checkout that never drops the user back to the top of the page.",
-    stack: ["Next.js", "TypeScript", "Stripe", "Tailwind"],
-    year: "2025",
-    schematic: "commerce",
-    placeholder: true,
-  },
-  {
-    title: "Console",
-    kind: "Dashboard",
-    blurb:
-      "A data console built around a dense table nobody has to fight: virtualised rows, sticky filters, and charts that stay readable at a glance.",
-    stack: ["React", "TypeScript", "D3", "TanStack"],
-    year: "2025",
-    schematic: "dashboard",
-    placeholder: true,
-  },
-  {
-    title: "Studio Site",
-    kind: "Marketing",
-    blurb:
-      "A single-page site for a small studio. Scroll-driven reveals, real typography, and a Lighthouse score that survived the animation budget.",
-    stack: ["Next.js", "GSAP", "Sanity"],
-    year: "2024",
+      "A bilingual English–Odia site for a fully automated pathology lab with digital X-ray and ECG. The whole visit is written out step by step — what to bring, what it costs, when the report is ready — so nobody arrives uncertain.",
+    stack: ["Next.js", "React", "Bilingual UI"],
+    href: "https://swayamsiddhadiagnostics.in/",
+    image: "swayamsiddha-lab",
     schematic: "editorial",
-    placeholder: true,
   },
   {
-    title: "Product App",
-    kind: "Web app",
+    title: "Swayamsiddha Collection Centre",
+    kind: "Test directory · Kendrapara",
     blurb:
-      "Auth, onboarding, empty states and the unglamorous screens most portfolios skip — the ones that decide whether a product feels finished.",
-    stack: ["Next.js", "Supabase", "Tailwind"],
-    year: "2024",
+      "The sibling site for the Old Hospital Road branch. All 73 tests are searchable by the shorthand a doctor actually writes — KFT, LFT, TSH — and the header counts down live to closing time.",
+    stack: ["Next.js", "React", "Client-side search"],
+    href: "https://swayamsiddhadiagnostics.info/",
+    image: "swayamsiddha-collection",
     schematic: "product",
-    placeholder: true,
+  },
+  {
+    title: "A to Z Financial Solution Hub",
+    kind: "Financial advisory · Bhubaneswar",
+    blurb:
+      "Investments, insurance and tax laid out as numbered chapters, with animated counters and an enquiry form that composes the visitor's WhatsApp message for them before they send it.",
+    stack: ["Next.js", "React", "GitHub Pages"],
+    href: "https://typesofplays.github.io/atozfinancialsolutionhub/",
+    image: "atoz-financial",
+    schematic: "dashboard",
   },
 ];
 
 export const contact = {
   headline: ["Have something", "worth building?"],
   body:
-    "Tell me what you are making, roughly when you need it, and what success looks like. I answer every genuine enquiry, usually within a day.",
+    "Tell me what you are making, roughly when you need it, and what success looks like. A short message with the real constraints is worth more than a long brief.",
   cta: "Start a project",
 };
 

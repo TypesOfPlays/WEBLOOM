@@ -14,7 +14,8 @@
   /* Text tinted from the ground's hue — never neutral gray */
   --color-chalk: #eef2fa;
   --color-mute: #929fba;
-  --color-faint: #5d6987;
+  /* 4.8:1 on --color-void; carries labels, years and stack lists */
+  --color-faint: #6f7c9c;
 
   --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-accent: var(--font-bodoni), ui-serif, Georgia, serif;
@@ -199,10 +200,61 @@
 }
 
 
+
+/* --- Aurora field geometry ---------------------------------------------
+   Positioned per breakpoint: the desktop composition pushes the blue body
+   far off the top-left, which on a 390px viewport would place it entirely
+   above the fold and leave mobile without the field's dominant colour. */
+
+.aurora-blue {
+  left: -34%;
+  top: -12%;
+  width: 168vw;
+}
+.aurora-mint {
+  right: -36%;
+  top: -4%;
+  width: 124vw;
+}
+.aurora-amber {
+  left: 2%;
+  top: 24%;
+  width: 118vw;
+}
+.aurora-cursor {
+  left: 50%;
+  top: -6%;
+  width: 130vw;
+  margin-left: -65vw;
+}
+
+@media (min-width: 1024px) {
+  .aurora-blue {
+    left: -14%;
+    top: -46%;
+    width: min(112vw, 1500px);
+  }
+  .aurora-mint {
+    right: -24%;
+    top: -14%;
+    width: min(88vw, 1150px);
+  }
+  .aurora-amber {
+    left: 22%;
+    top: 8%;
+    width: min(80vw, 1050px);
+  }
+  .aurora-cursor {
+    top: -18%;
+    width: min(70vw, 900px);
+    margin-left: min(-35vw, -450px);
+  }
+}
+
 /* --- Hero display type -------------------------------------------------- */
 
 .hero-type {
-  font-size: clamp(2.9rem, 11.4vw, 9.25rem);
+  font-size: clamp(3.35rem, 11.4vw, 9.25rem);
   line-height: 0.86;
   letter-spacing: -0.045em;
   text-wrap: balance;

@@ -4,15 +4,43 @@ import { useEffect, useRef } from "react";
 
 /**
  * The one authored atmosphere of the page: a slow-drifting field of light
- * behind everything, which leans very slightly toward the pointer. It is a
- * single orchestrated moment rather than scattered effects — every other
- * element on the page sits still and lets this breathe.
+ * behind everything, which leans very slightly toward the pointer.
  *
- * Deliberately built from raw radial gradients with no `filter: blur()`.
- * A blurred layer this large forces a full-surface re-rasterise on every
- * animation frame; the gradients are already soft, and the grain overlay in
- * globals.css hides the banding a blur would otherwise have covered.
+ * The Gaussian is baked into transparent PNGs by scripts/gen-aurora.mjs rather
+ * than applied live. A `filter: blur()` on a layer this size re-rasterises the
+ * whole surface every animation frame; raw radial gradients avoid that but band
+ * visibly on a dark ground. Pre-blurred rasters give the soft, volumetric field
+ * the design wants and cost nothing per frame — the layers only ever transform.
  */
+
+const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+function Blob({
+  name,
+  className,
+  style,
+  opacity,
+}: {
+  name: "blue" | "mint" | "amber";
+  className?: string;
+  style?: React.CSSProperties;
+  opacity: number;
+}) {
+  return (
+    <img
+      src={`${bp}/aurora/${name}-1400.png`}
+      srcSet={`${bp}/aurora/${name}-700.png 700w, ${bp}/aurora/${name}-1400.png 1400w`}
+      sizes="(max-width: 768px) 130vw, 90vw"
+      alt=""
+      aria-hidden="true"
+      decoding="async"
+      fetchPriority={name === "blue" ? "high" : "low"}
+      className={`absolute max-w-none select-none ${className ?? ""}`}
+      style={{ opacity, willChange: "transform", ...style }}
+    />
+  );
+}
+
 export default function Aurora() {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -66,42 +94,9 @@ export default function Aurora() {
       }
     >
       {/* The deep blue body of the field */}
-      <div
-        className="drift-a absolute"
-        style={{
-          left: "-6%",
-          top: "-34%",
-          width: "86vw",
-          height: "86vw",
-          background:
-            "radial-gradient(closest-side, rgba(41,104,255,0.46), rgba(28,64,180,0.24) 45%, rgba(18,38,110,0.09) 66%, transparent 80%)",
-          willChange: "transform",
-        }}
-      />
-      <div
-        className="drift-b absolute"
-        style={{
-          right: "-16%",
-          top: "-8%",
-          width: "70vw",
-          height: "70vw",
-          background:
-            "radial-gradient(closest-side, rgba(0,224,205,0.17), rgba(0,132,180,0.10) 48%, transparent 78%)",
-          willChange: "transform",
-        }}
-      />
-      <div
-        className="drift-c absolute"
-        style={{
-          left: "26%",
-          top: "18%",
-          width: "62vw",
-          height: "62vw",
-          background:
-            "radial-gradient(closest-side, rgba(255,171,0,0.17), rgba(255,110,0,0.08) 44%, transparent 76%)",
-          willChange: "transform",
-        }}
-      />
+      <Blob name="blue" className="aurora-blue drift-a" opacity={0.95} />
+      <Blob name="mint" className="aurora-mint drift-b" opacity={0.8} />
+      <Blob name="amber" className="aurora-amber drift-c" opacity={0.75} />
 
       {/* Pointer-led highlight — the field notices you */}
       <div
@@ -112,18 +107,7 @@ export default function Aurora() {
           willChange: "transform",
         }}
       >
-        <div
-          className="absolute"
-          style={{
-            left: "50%",
-            top: "8%",
-            width: "56vw",
-            height: "56vw",
-            marginLeft: "-28vw",
-            background:
-              "radial-gradient(closest-side, rgba(140,180,255,0.15), transparent 72%)",
-          }}
-        />
+        <Blob name="blue" className="aurora-cursor" opacity={0.32} />
       </div>
 
       {/* Vignette + floor: keeps text off the brightest part of the field */}
@@ -131,14 +115,14 @@ export default function Aurora() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(125% 85% at 50% 2%, transparent 26%, rgba(5,7,14,0.5) 64%, rgba(5,7,14,0.9) 100%)",
+            "radial-gradient(125% 88% at 50% 2%, transparent 30%, rgba(5,7,14,0.42) 66%, rgba(5,7,14,0.86) 100%)",
         }}
       />
       <div
-        className="absolute inset-x-0 bottom-0 h-[45vh]"
+        className="absolute inset-x-0 bottom-0 h-[42vh]"
         style={{
           background:
-            "linear-gradient(to bottom, transparent, rgba(5,7,14,0.86) 55%, #05070e)",
+            "linear-gradient(to bottom, transparent, rgba(5,7,14,0.8) 58%, #05070e)",
         }}
       />
     </div>

@@ -4,9 +4,21 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative z-10 flex min-h-[100svh] flex-col justify-end px-5 pb-7 pt-28 sm:px-8 sm:pb-9 lg:px-12"
+      className="relative z-10 flex min-h-[100svh] flex-col justify-center px-5 pb-7 pt-28 sm:px-8 sm:pb-9 lg:justify-end lg:px-12"
     >
       <div className="mx-auto w-full max-w-[1400px]">
+        {site.availability.open && (
+          <span className="mb-7 inline-flex w-fit items-center gap-2.5 rounded-full border border-line bg-shelf/60 py-2 pl-3 pr-4 backdrop-blur md:hidden">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint opacity-70" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-mint" />
+            </span>
+            <span className="text-[0.6875rem] font-medium tracking-[0.14em] text-mute">
+              {site.availability.detail}
+            </span>
+          </span>
+        )}
+
         <h1 className="hero-type font-display font-semibold text-chalk">
           <span className="block overflow-hidden">
             <span className="hero-line block">
@@ -48,8 +60,8 @@ export default function Hero() {
             href="#work"
             className="group inline-flex items-center gap-3 text-sm font-medium text-chalk transition-colors hover:text-amber"
           >
-            <span className="scroll-hint relative flex h-9 w-5 items-start justify-center overflow-hidden rounded-full border border-line">
-              <span className="mt-1.5 block h-1.5 w-[3px] rounded-full bg-amber" />
+            <span className="scroll-hint relative flex h-10 w-6 items-start justify-center overflow-hidden rounded-full border border-faint/60 transition-colors duration-300 group-hover:border-amber">
+              <span className="mt-2 block h-2 w-[3px] rounded-full bg-amber" />
             </span>
             Selected work
           </a>
