@@ -23,10 +23,10 @@ export default function Hero() {
 
         <h1 className="display display-xl text-chalk">
           <KineticText
-            delay={0.55}
+            delay={1.6}
             segments={[
               { text: hero.lineOne.join(" ") },
-              { text: hero.accent, accent: true },
+              { text: hero.accent, accent: true, underline: true },
               { text: hero.lineTwo.join(" ") },
             ]}
           />

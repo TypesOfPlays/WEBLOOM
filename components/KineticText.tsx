@@ -2,7 +2,12 @@
 
 import { useEffect, useRef } from "react";
 
-export type Segment = { text: string; accent?: boolean };
+export type Segment = {
+  text: string;
+  accent?: boolean;
+  /** draws an imperfect mint rule under this segment, left to right */
+  underline?: boolean;
+};
 
 /**
  * Display type that rises character by character out of its own word box.
@@ -125,7 +130,13 @@ export default function KineticText({
       <span className="sr-only">{plain}</span>
       <span ref={ref} aria-hidden="true" className="k-root">
         {segments.map((seg, si) => (
-          <span key={si} className={seg.accent ? "accent-italic" : undefined}>
+          <span
+            key={si}
+            className={
+              (seg.accent ? "accent-italic" : "") +
+              (seg.underline ? " k-underlined" : "")
+            }
+          >
             {seg.text.split(" ").map((word, wi) => (
               <span key={wi} className="k-word">
                 {unit === "word" ? (
@@ -139,6 +150,21 @@ export default function KineticText({
                 )}
               </span>
             ))}
+            {seg.underline && (
+              /* Drawn rather than a border: a border cannot wobble, and the
+                 point of this mark is that it looks made by hand. Stretched
+                 to the word with a non-scaling stroke so the line keeps an
+                 even weight at any headline size. */
+              <svg
+                className="k-underline"
+                viewBox="0 0 300 20"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M3 13.4C34 7.8 61 15.2 92 11.6c31-3.7 52 5.4 84 2.1 27-2.8 44-9.9 71-6.4 20 2.6 34 8.1 47 5.2" />
+              </svg>
+            )}
           </span>
         ))}
       </span>

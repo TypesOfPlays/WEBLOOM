@@ -298,6 +298,65 @@
 
 
 
+
+/* --- The drawn underline -------------------------------------------------
+   Mint under the amber word: the two accents the world already owns, and the
+   only place they touch. It draws in from the left after the characters have
+   landed, slowly enough to read as a gesture rather than a transition. */
+
+.k-underlined {
+  position: relative;
+  display: inline-block;
+}
+
+/* An <svg> is a replaced element: left + right does NOT stretch it, it falls
+   back to its intrinsic 300px and the rule stops short of the word. It needs
+   a definite width. */
+.k-underline {
+  position: absolute;
+  left: 0.06em;
+  bottom: 0.02em;
+  width: calc(100% - 0.3em);
+  height: 0.17em;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* Stroke width stays in the viewBox's own units. The SVG is sized in em, so
+   the whole coordinate system scales with the headline and the line keeps its
+   proportion at every size — no non-scaling-stroke needed, and crucially the
+   dash pattern then measures in the same space as the path. */
+.k-underline path {
+  fill: none;
+  stroke: var(--color-mint);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.js .k-underline path {
+  stroke-dasharray: 330;
+  stroke-dashoffset: 330;
+}
+
+.js .k-ready .k-underline path {
+  animation: draw-underline 1.7s var(--ease-expo) 3s forwards;
+}
+
+@keyframes draw-underline {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .k-underline path,
+  .js .k-ready .k-underline path {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
+
 /* --- Custom cursor -------------------------------------------------------
    Difference blend so one cursor works over both the dark ground and the
    light project covers. The native cursor is hidden only once the script has
@@ -365,13 +424,17 @@ html.cursor-custom * {
   display: inline;
 }
 
+/* The mask needs room on every side, not just under the descenders. Display
+   leading is crushed to 0.84, so the line box is shorter than the letterforms
+   and an overflow-hidden word crops the top of a tall cap and the overhang of
+   an italic. Padding opens the mask; the matching negative margins keep the
+   layout and the word spacing exactly where they were. */
 .k-word {
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
-  padding-bottom: 0.14em;
-  margin-bottom: -0.14em;
-  margin-right: 0.24em;
+  padding: 0.22em 0.09em 0.2em;
+  margin: -0.22em 0.15em -0.2em -0.09em;
   perspective: 700px;
 }
 

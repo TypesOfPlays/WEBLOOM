@@ -1,7 +1,6 @@
 import { contact, site, socials } from "@/lib/content";
 import Reveal from "./Reveal";
 import KineticText from "./KineticText";
-import Magnetic from "./Magnetic";
 
 export default function Contact() {
   const mailto =
@@ -40,8 +39,7 @@ export default function Contact() {
               href={mailto}
               className="group inline-flex max-w-full items-center gap-4 sm:gap-6"
             >
-              <Magnetic strength={0.45} radius={130} className="shrink-0">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-amber text-void transition-transform duration-500 ease-out group-hover:scale-110 sm:h-16 sm:w-16">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber text-void transition-transform duration-500 ease-out group-hover:scale-110 sm:h-16 sm:w-16">
                 <svg
                   width="20"
                   height="20"
@@ -57,8 +55,7 @@ export default function Contact() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                </span>
-              </Magnetic>
+              </span>
               <span
                 className={
                   "min-w-0 break-all text-xl font-medium tracking-[-0.02em] underline decoration-line underline-offset-[0.3em] transition-colors duration-300 group-hover:decoration-amber sm:text-3xl lg:text-4xl " +
