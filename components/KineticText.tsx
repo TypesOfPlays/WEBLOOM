@@ -20,12 +20,16 @@ export default function KineticText({
   className = "",
   delay = 0,
   trigger = "load",
+  unit = "char",
 }: {
   segments: Segment[];
   className?: string;
   delay?: number;
   /** "load" animates on mount; "scroll" waits until it enters the viewport */
   trigger?: "load" | "scroll";
+  /** Long passages reveal by word — a per-character stagger over a full
+   *  sentence runs for seconds and reads as a loading bar, not as craft. */
+  unit?: "char" | "word";
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const plain = segments.map((s) => s.text).join(" ");
@@ -34,9 +38,7 @@ export default function KineticText({
     const root = ref.current;
     if (!root) return;
 
-    const chars = Array.from(
-      root.querySelectorAll<HTMLElement>(".k-char"),
-    );
+    const chars = Array.from(root.querySelectorAll<HTMLElement>(".k-char"));
     if (!chars.length) return;
 
     const reduced = window.matchMedia(
@@ -83,10 +85,10 @@ export default function KineticText({
         gsap.to(chars, {
           yPercent: 0,
           rotateX: 0,
-          duration: 1.15,
+          duration: unit === "word" ? 1 : 1.15,
           delay,
           ease: "expo.out",
-          stagger: { each: 0.014, from: "start" },
+          stagger: { each: unit === "word" ? 0.055 : 0.014, from: "start" },
         });
 
       if (trigger === "load") {
@@ -114,7 +116,7 @@ export default function KineticText({
       killed = true;
       cleanup();
     };
-  }, [delay, trigger]);
+  }, [delay, trigger, unit]);
 
   let k = 0;
 
@@ -126,11 +128,15 @@ export default function KineticText({
           <span key={si} className={seg.accent ? "accent-italic" : undefined}>
             {seg.text.split(" ").map((word, wi) => (
               <span key={wi} className="k-word">
-                {Array.from(word).map((ch) => (
-                  <span key={k++} className="k-char">
-                    {ch}
-                  </span>
-                ))}
+                {unit === "word" ? (
+                  <span className="k-char">{word}</span>
+                ) : (
+                  Array.from(word).map((ch) => (
+                    <span key={k++} className="k-char">
+                      {ch}
+                    </span>
+                  ))
+                )}
               </span>
             ))}
           </span>

@@ -57,8 +57,8 @@ await page.goto("http://localhost:4176", { waitUntil: "networkidle0" });
 
 const sample = async (label) => {
   const data = await page.evaluate(() => {
-    const chars = Array.from(document.querySelectorAll("h1 .k-char"));
-    const words = Array.from(document.querySelectorAll("h1 .k-word"));
+    const chars = Array.from(document.querySelectorAll(".k-char"));
+    const words = Array.from(document.querySelectorAll(".k-word"));
     // A character is "shown" when its box overlaps its word's mask box.
     let hidden = 0;
     for (const c of chars) {
@@ -83,10 +83,21 @@ const sample = async (label) => {
   return data;
 };
 
-for (const t of [600, 1400, 2400, 3600, 5000]) {
+for (const t of [600, 1400, 2400]) {
   await new Promise((r) => setTimeout(r, t === 600 ? 600 : 800));
   await sample(`${t}ms`);
 }
+
+// Walk the whole page so every scroll-triggered reveal is actually asked to
+// run, then come back. A reveal that never fires leaves its text invisible.
+const height = await page.evaluate(() => document.body.scrollHeight);
+for (let y = 0; y < height; y += 500) {
+  await page.evaluate((to) => window.scrollTo(0, to), y);
+  await new Promise((r) => setTimeout(r, 260));
+}
+await page.evaluate(() => window.scrollTo(0, 0));
+await new Promise((r) => setTimeout(r, 1600));
+await sample("scrolled");
 
 const final = await sample("final");
 console.log(`\nheadline text: "${final.text}"`);

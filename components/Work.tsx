@@ -6,6 +6,7 @@ import Schematic from "./Schematic";
 import Reveal from "./Reveal";
 import DotList from "./DotList";
 import Tilt from "./Tilt";
+import KineticText from "./KineticText";
 
 const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -99,7 +100,7 @@ export default function Work() {
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4 border-b border-line pb-8">
             <h2 className="display display-lg text-chalk">
-              Selected work
+              <KineticText trigger="scroll" segments={[{ text: "Selected work" }]} />
             </h2>
             <p className="max-w-[34ch] text-sm leading-relaxed text-mute">
               Sites built for real businesses, all of them live. Every one is

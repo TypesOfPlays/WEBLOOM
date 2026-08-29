@@ -1,5 +1,6 @@
 import { about, site } from "@/lib/content";
 import Reveal from "./Reveal";
+import KineticText from "./KineticText";
 
 export default function About() {
   return (
@@ -10,7 +11,11 @@ export default function About() {
       <div className="mx-auto w-full max-w-[1400px]">
         <Reveal>
           <p className="display max-w-[22ch] text-[2.1rem] leading-[1.06] text-chalk sm:max-w-[26ch] sm:text-5xl lg:max-w-[28ch] lg:text-[4.4rem]">
-            {about.statement}
+            <KineticText
+              trigger="scroll"
+              unit="word"
+              segments={[{ text: about.statement }]}
+            />
           </p>
         </Reveal>
 
