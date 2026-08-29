@@ -179,7 +179,7 @@ export default function Work() {
                       <h3 className="flex flex-wrap items-center gap-x-3 gap-y-2 text-2xl font-semibold tracking-[-0.03em] text-chalk transition-colors duration-500 group-hover:text-amber group-focus-visible:text-amber sm:text-3xl lg:text-[2.5rem]">
                         {p.title}
                         {p.placeholder && (
-                          <span className="rounded-full border border-amber/45 px-2.5 py-1 text-[0.5625rem] font-semibold uppercase tracking-[0.18em] text-amber">
+                          <span className="rounded-full border border-amber/45 px-3 py-1 text-[0.6875rem] font-medium uppercase leading-none tracking-[0.22em] text-amber">
                             Placeholder
                           </span>
                         )}
