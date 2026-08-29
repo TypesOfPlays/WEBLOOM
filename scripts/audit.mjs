@@ -64,6 +64,7 @@ const browser = await puppeteer.launch({
 for (const vp of [
   { name: "desktop", width: 1440, height: 900 },
   { name: "mobile", width: 390, height: 844, isMobile: true },
+  { name: "narrow", width: 320, height: 720, isMobile: true },
 ]) {
   const page = await browser.newPage();
   const errors = [];
