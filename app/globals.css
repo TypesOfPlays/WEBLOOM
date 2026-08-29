@@ -428,9 +428,12 @@
 .k-underline {
   position: absolute;
   left: 0.06em;
-  bottom: 0.02em;
+  /* Below the descenders, not through them. The accent word can contain a p,
+     g or y, and a rule sitting at the box's baseline strikes through them
+     instead of underlining the word. */
+  bottom: -0.1em;
   width: calc(100% - 0.3em);
-  height: 0.17em;
+  height: 0.16em;
   overflow: visible;
   pointer-events: none;
 }
@@ -586,7 +589,7 @@ html.cursor-custom * {
 }
 
 .rader-live .display-xl {
-  letter-spacing: -0.04em;
+  letter-spacing: -0.05em;
 }
 
 /* Räder carries a hairline. At poster scale it is the whole reason to use
@@ -612,9 +615,9 @@ html.cursor-custom * {
 }
 
 .display-xl {
-  font-size: clamp(3.6rem, 12.5vw, 11.5rem);
-  line-height: 0.84;
-  letter-spacing: -0.025em;
+  font-size: clamp(3.9rem, 14vw, 13.5rem);
+  line-height: 0.8;
+  letter-spacing: -0.03em;
 }
 
 .display-lg {

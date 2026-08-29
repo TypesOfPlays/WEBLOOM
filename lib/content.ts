@@ -46,10 +46,14 @@ export const socials: { label: string; href: string; placeholder?: boolean }[] =
   ];
 
 export const hero = {
-  /* Rendered as: Creative *frontend* developer — the italic word is amber. */
-  lineOne: ["Creative"],
-  accent: "frontend",
-  lineTwo: ["developer"],
+  /* One amber italic word, carrying the drawn mint rule. Says what the work is
+     rather than naming the job title, which every portfolio opens with and
+     which no competitor would struggle to copy. The role itself is carried by
+     the page title, the hero meta and the About column. */
+  headline: [
+    { text: "Frontend, done" },
+    { text: "properly", accent: true, underline: true },
+  ],
   lead:
     "I build the part of the product people actually touch — interfaces that load fast, read clearly and feel deliberate on every screen.",
   meta: [
