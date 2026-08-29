@@ -27,7 +27,7 @@ export default function Nav() {
       >
         <a
           href="#top"
-          className="group flex items-baseline gap-2 text-[0.8rem] font-extrabold uppercase tracking-[0.3em] text-chalk transition-colors hover:text-amber sm:text-sm"
+          className="group flex items-baseline gap-2 font-display text-[0.8rem] font-extrabold uppercase tracking-[0.3em] text-chalk transition-colors hover:text-amber sm:text-sm"
         >
           {site.name}
           <span className="h-1 w-1 rounded-full bg-mint transition-transform duration-300 group-hover:scale-[2.2]" />

@@ -10,7 +10,7 @@ export default function About() {
     >
       <div className="mx-auto w-full max-w-[1400px]">
         <Reveal>
-          <p className="display max-w-[22ch] text-[2.1rem] leading-[1.06] text-chalk sm:max-w-[26ch] sm:text-5xl lg:max-w-[28ch] lg:text-[4.4rem]">
+          <p className="display display-statement max-w-[22ch] text-chalk sm:max-w-[26ch] lg:max-w-[28ch]">
             <KineticText
               trigger="scroll"
               unit="word"
@@ -25,7 +25,7 @@ export default function About() {
               <span className="h-px w-full bg-line" />
               <p
                 className={
-                  "display text-3xl sm:text-4xl " +
+                  "display display-title-sm " +
                   (site.ownerPlaceholder ? "italic text-faint" : "text-chalk")
                 }
               >

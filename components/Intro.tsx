@@ -78,7 +78,7 @@ export default function Intro() {
       className="fixed inset-0 z-[100] flex items-center justify-center bg-void"
       style={{ visibility: "hidden" }}
     >
-      <span className="flex overflow-hidden text-[0.8rem] font-extrabold uppercase tracking-[0.42em] text-chalk sm:text-sm">
+      <span className="flex overflow-hidden font-display text-[0.8rem] font-extrabold uppercase tracking-[0.42em] text-chalk sm:text-sm">
         {Array.from(site.name).map((ch, i) => (
           <span key={i} className="intro-letter inline-block">
             {ch}

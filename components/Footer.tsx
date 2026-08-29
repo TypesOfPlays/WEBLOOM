@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="relative z-10 px-5 pb-10 sm:px-8 lg:px-12">
       <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-6 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
-          <span className="text-[0.8rem] font-extrabold uppercase tracking-[0.3em] text-chalk">
+          <span className="font-display text-[0.8rem] font-extrabold uppercase tracking-[0.3em] text-chalk">
             {site.name}
           </span>
           <span className="h-1 w-1 rounded-full bg-mint" />

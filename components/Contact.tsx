@@ -17,7 +17,7 @@ export default function Contact() {
     >
       <div className="mx-auto w-full max-w-[1400px]">
         <Reveal>
-          <h2 className="display text-[clamp(2.9rem,9vw,8rem)] leading-[0.9] text-chalk">
+          <h2 className="display display-headline text-chalk">
             <KineticText
               trigger="scroll"
               segments={[

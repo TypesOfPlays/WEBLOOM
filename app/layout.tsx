@@ -52,6 +52,47 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Räder (Pangram Pangram) is a licensed face and is not committed to this
+ * repo. The @font-face is declared unconditionally: if the files are absent
+ * the browser simply falls through to Bodoni Moda, so a missing licence
+ * degrades instead of breaking the build or the deploy.
+ *
+ * Declared here rather than in globals.css because the src has to carry the
+ * GitHub Pages base path, and CSS url() cannot read a custom property.
+ */
+const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+const RADER_FACE = `
+@font-face {
+  font-family: "Rader";
+  src: url("${bp}/fonts/Rader-Variable.woff2") format("woff2-variations"),
+       url("${bp}/fonts/Rader-Regular.woff2") format("woff2");
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rader";
+  src: url("${bp}/fonts/Rader-Variable-Italic.woff2") format("woff2-variations"),
+       url("${bp}/fonts/Rader-Italic.woff2") format("woff2");
+  font-weight: 100 700;
+  font-style: italic;
+  font-display: swap;
+}`;
+
+/**
+ * Flags <html> once Räder has really loaded, so its own tracking applies.
+ * Didone tracking on a road-sign sans reads as a mistake.
+ */
+const RADER_PROBE = `
+document.documentElement.classList.add('js');
+if (document.fonts && document.fonts.load) {
+  document.fonts.load('1em Rader').then(function (f) {
+    if (f.length) document.documentElement.classList.add('rader-live');
+  }).catch(function () {});
+}`;
+
 const DIRECTION_CONTRACT = `<!--
 impeccable:direction WEBLOOM / seed: pinned-reference-19871911
 
@@ -85,11 +126,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `document.documentElement.classList.add('js')`,
-          }}
-        />
+        <style dangerouslySetInnerHTML={{ __html: RADER_FACE }} />
+        <script dangerouslySetInnerHTML={{ __html: RADER_PROBE }} />
       </head>
       <body className="grain antialiased">
         <div

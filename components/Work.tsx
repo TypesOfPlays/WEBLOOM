@@ -183,7 +183,7 @@ export default function Work() {
                     }
                   >
                     <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
-                      <h3 className="display flex flex-wrap items-center gap-x-3 gap-y-2 text-[1.75rem] text-chalk transition-colors duration-500 group-hover:text-amber group-focus-visible:text-amber sm:text-4xl lg:text-[3rem]">
+                      <h3 className="display display-title flex flex-wrap items-center gap-x-3 gap-y-2 text-chalk transition-colors duration-500 group-hover:text-amber group-focus-visible:text-amber">
                         {p.title}
                         {p.placeholder && (
                           <span className="rounded-full border border-amber/45 px-3 py-1 text-[0.6875rem] font-medium uppercase leading-none tracking-[0.22em] text-amber">

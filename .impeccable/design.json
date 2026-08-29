@@ -8,80 +8,119 @@
         "role": "neutral",
         "displayName": "Deep Navy Void",
         "canonical": "#05070e",
-        "tonalRamp": ["#020307", "#05070e", "#090d18", "#11172a", "#1c2643", "#2c3a63", "#4a5c8c", "#8f9ec4"]
+        "tonalRamp": ["#020307", "#05070e", "#090d18", "#101728", "#1a2133", "#39445e", "#6f7c9c", "#c3cbdc"]
       },
       "shelf": {
         "role": "neutral",
         "displayName": "Shelf Navy",
         "canonical": "#090d18",
-        "tonalRamp": ["#04060c", "#090d18", "#0f1526", "#182238", "#243154", "#374880", "#5b6da4", "#9aa8cc"]
+        "tonalRamp": ["#03050b", "#060913", "#090d18", "#111827", "#1d2740", "#3b4a6d", "#7385a8", "#c7cfe0"]
       },
       "line": {
         "role": "neutral",
         "displayName": "Hairline Navy",
         "canonical": "#1a2133",
-        "tonalRamp": ["#080b12", "#0f1420", "#1a2133", "#26304a", "#354262", "#4b5a80", "#7381a5", "#aab4cd"]
+        "tonalRamp": ["#0a0e17", "#121826", "#1a2133", "#26304a", "#354363", "#4e5f86", "#8593b4", "#ced5e4"]
       },
       "amber": {
         "role": "primary",
         "displayName": "Signal Amber",
         "canonical": "#ffab00",
-        "tonalRamp": ["#291b00", "#4d3300", "#734c00", "#996600", "#c78500", "#ffab00", "#ffc555", "#ffe3ab"]
+        "tonalRamp": ["#2b1c00", "#4d3200", "#754c00", "#a06800", "#cc8500", "#ffab00", "#ffc958", "#ffe6b3"]
       },
       "mint": {
         "role": "secondary",
         "displayName": "Instrument Mint",
         "canonical": "#00ffe0",
-        "tonalRamp": ["#00251f", "#00423a", "#005f54", "#008070", "#00a893", "#00d1b7", "#00ffe0", "#a8fff3"]
+        "tonalRamp": ["#00241f", "#003d35", "#00594e", "#007a6b", "#00a893", "#00d4b9", "#00ffe0", "#b0fff4"]
       },
       "chalk": {
         "role": "neutral",
         "displayName": "Chalk",
         "canonical": "#eef2fa",
-        "tonalRamp": ["#191d26", "#2b323f", "#40495c", "#5a6580", "#7a86a3", "#9fa9c2", "#c8cfdf", "#eef2fa"]
+        "tonalRamp": ["#171c26", "#2a3140", "#3f485c", "#5b6579", "#7f8899", "#a8b0bf", "#cdd4e0", "#eef2fa"]
       },
       "mute": {
         "role": "neutral",
-        "displayName": "Mute",
+        "displayName": "Mute Slate",
         "canonical": "#929fba",
-        "tonalRamp": ["#161a24", "#252c3c", "#374158", "#4d5876", "#677395", "#8592b0", "#929fba", "#c4cbdc"]
+        "tonalRamp": ["#131721", "#222939", "#333c53", "#48546f", "#61708f", "#7c8ba8", "#929fba", "#ced5e3"]
       },
       "faint": {
         "role": "neutral",
-        "displayName": "Faint",
+        "displayName": "Faint Slate",
         "canonical": "#6f7c9c",
-        "tonalRamp": ["#12161f", "#1e2432", "#2d3648", "#404b64", "#576483", "#6f7c9c", "#98a2ba", "#c6ccda"]
+        "tonalRamp": ["#10131c", "#1c2231", "#2a3247", "#3b4560", "#4f5b7b", "#616e91", "#6f7c9c", "#b6bece"]
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Hero and contact headlines only. Left-aligned, text-wrap: balance." },
-      "display-accent": { "displayName": "Display Accent", "purpose": "Exactly one Bodoni Moda italic word per display line, always in Signal Amber." },
-      "headline": { "displayName": "Headline", "purpose": "Section headings and the about statement, held to a 20-26ch measure." },
-      "title": { "displayName": "Title", "purpose": "Project row names and capability terms; chalk at rest, amber on hover or focus." },
-      "body": { "displayName": "Body", "purpose": "Lead and running prose in Mute, capped at 46-68ch." },
-      "body-small": { "displayName": "Body Small", "purpose": "Blurbs, meta answers, footer and social links." },
-      "label": { "displayName": "Label", "purpose": "Every micro-label: nav links, meta keys, stack lists, timezone, footer credit." },
-      "wordmark": { "displayName": "Wordmark", "purpose": "WEBLOOM in nav and footer, followed by a 4px mint dot." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "The hero headline only. Bodoni Moda variable with opsz driven to 96; text-wrap: balance; leading crushed to 0.84."
+      },
+      "display-lg": {
+        "displayName": "Display Large",
+        "purpose": "Section headings such as 'Selected work'. Same face and axis setting, one step down."
+      },
+      "display-accent": {
+        "displayName": "Display Accent",
+        "purpose": "Exactly one italic amber word inside a display line. Weight drops to 400 and tracking returns to 0 to compensate for the italic fit."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "The about statement, stepping 2.1rem / 3rem / 4.4rem at a 22-28ch measure so it breaks as a poster, not a paragraph."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The contact headline, the page's second-largest typographic moment."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project row names, stepping 1.75rem / 2.25rem / 3rem. Chalk at rest, amber on hover or keyboard focus."
+      },
+      "title-sm": {
+        "displayName": "Title Small",
+        "purpose": "The owner name in the about column, at 1.875rem / 2.25rem."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Manrope. Lead and running prose in mute, capped at 46-68ch depending on column."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Project blurbs, hero meta answers, footer and social links."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Every micro-label: hero meta keys, nav links, stack lists, timezone, footer credit. Uppercase, 0.22em, faint."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "WEBLOOM in nav and footer, extrabold at 0.3em, followed by a 4px mint dot. The intro curtain sets the same wordmark at 0.42em."
+      }
     },
     "shadows": [
       {
         "name": "cover-drop",
         "value": "0 30px 70px -28px rgba(2,4,10,0.9)",
-        "purpose": "The only shadow in the build. Desktop sticky cover panel exclusively; reads as the photograph held slightly off the page."
+        "purpose": "The only shadow in the build. Desktop sticky cover panel only; reads as the photograph held slightly off the page."
       }
     ],
     "motion": [
-      { "name": "ease-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Reveals, hero line rise, cover filter release, scroll hint. The system's arrival curve." },
-      { "name": "ease-swift", "value": "cubic-bezier(0.22, 0.61, 0.36, 1)", "purpose": "Aurora drift loops only." },
-      { "name": "drift-a", "value": "26s infinite; translate3d(6vw,-4vh,0) scale(1.18) at 50%", "purpose": "Blue aurora body." },
-      { "name": "drift-b", "value": "34s infinite; translate3d(-7vw,5vh,0) scale(0.92) at 50%", "purpose": "Mint aurora lobe." },
-      { "name": "drift-c", "value": "30s infinite; translate3d(4vw,6vh,0) scale(1.25) at 50%", "purpose": "Amber aurora lobe." },
-      { "name": "reveal", "value": "opacity 0.9s ease-expo, transform 1.05s ease-expo; from translateY(26px)", "purpose": "Scroll reveal, staggered 60-90ms per sibling. Applied only when the js class is present." },
-      { "name": "hero-rise", "value": "rise 1.05s ease-expo; from translateY(112%)", "purpose": "Display lines rise from an overflow-hidden mask, second line delayed 0.24s." },
-      { "name": "state-hover", "value": "500ms", "purpose": "Colour and transform changes on work rows, capability rows and the email mark." },
-      { "name": "nav-materialise", "value": "500ms on background-color, border-color, backdrop-filter", "purpose": "Nav gains 70% void + 24px blur past 24px of scroll." },
-      { "name": "cover-release", "value": "filter 0.6s ease-expo", "purpose": "Project cover from tamed to full colour on hover or focus at desktop." },
-      { "name": "reduced-motion", "value": "all drift, rise, sweep, smooth-scroll and reveal transitions disabled; remaining animations clamped to 0.001ms", "purpose": "prefers-reduced-motion: reduce. Motion is never load-bearing for legibility." }
+      { "name": "ease-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Reveals, filter transitions, cursor state changes, field cross-fades." },
+      { "name": "ease-swift", "value": "cubic-bezier(0.22, 0.61, 0.36, 1)", "purpose": "The baked aurora's drift loops." },
+      { "name": "kinetic-char", "value": "gsap expo.out, 1.15s, stagger 0.014s from start, yPercent 108 -> 0, rotateX -55deg -> 0", "purpose": "Per-character display reveal out of per-word masks." },
+      { "name": "kinetic-word", "value": "gsap expo.out, 1s, stagger 0.055s from start", "purpose": "Whole-word variant for passages long enough that a per-character stagger reads as a loading bar." },
+      { "name": "field-crossfade", "value": "opacity 1.6s var(--ease-expo)", "purpose": "Baked PNG layers fading out once html.shader-live is stamped." },
+      { "name": "nav-materialise", "value": "500ms", "purpose": "Nav background, border and 24px backdrop blur fading in past 24px of scroll." },
+      { "name": "cover-crossfade", "value": "700ms", "purpose": "Sticky cover swapping between active projects." },
+      { "name": "cover-untame", "value": "filter 0.6s var(--ease-expo)", "purpose": "Project cover releasing to full colour on engagement at desktop." },
+      { "name": "drift-loops", "value": "26s / 34s / 30s infinite", "purpose": "The three baked aurora layers; transform only, never filter." },
+      { "name": "sweep-down", "value": "2.4s var(--ease-expo) infinite", "purpose": "The amber bar inside the scroll-hint capsule." },
+      { "name": "cursor-lerp", "value": "0.16 per frame", "purpose": "Ring trailing the exact dot; scale lerps at the same rate to 2.1x over interactive targets." },
+      { "name": "magnetic-lerp", "value": "0.18 per frame, strength 0.45, radius 130px", "purpose": "The contact CTA mark, and nothing else." },
+      { "name": "tilt", "value": "0.07 per frame, max 7.5deg on each axis, 30px translateZ, 1200px perspective", "purpose": "The desktop sticky cover, driven from pointer position across the whole viewport." },
+      { "name": "reduced-motion-clamp", "value": "animation-duration: 0.001ms; transition-duration: 0.001ms", "purpose": "Global kill under prefers-reduced-motion, on top of the shader, curtain, cursor and kinetic opt-outs." }
     ],
     "breakpoints": [
       { "name": "sm", "value": "640px" },
@@ -92,127 +131,146 @@
   "components": [
     {
       "name": "Wordmark",
-      "kind": "custom",
+      "kind": "nav",
       "refersTo": "wordmark",
-      "description": "WEBLOOM plus a mint dot; appears in nav and footer. The dot swells on hover while the text goes amber.",
-      "html": "<a class=\"ds-wordmark\" href=\"#top\">WEBLOOM<span class=\"ds-wordmark-dot\"></span></a>",
-      "css": ".ds-wordmark { display: inline-flex; align-items: baseline; gap: 8px; font-family: Manrope, ui-sans-serif, system-ui, sans-serif; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3em; color: #eef2fa; text-decoration: none; transition: color 0.15s; } .ds-wordmark-dot { height: 4px; width: 4px; border-radius: 9999px; background: #00ffe0; transition: transform 0.3s; } .ds-wordmark:hover { color: #ffab00; } .ds-wordmark:hover .ds-wordmark-dot { transform: scale(2.2); } .ds-wordmark:focus-visible { outline: 2px solid #00ffe0; outline-offset: 3px; border-radius: 2px; }"
+      "description": "WEBLOOM plus a mint dot; the dot scales 2.2x on hover while the text goes amber.",
+      "html": "<a class=\"ds-wordmark\" href=\"#\">WEBLOOM<span class=\"ds-wordmark-dot\"></span></a>",
+      "css": ".ds-wordmark { display: inline-flex; align-items: baseline; gap: 8px; font-family: var(--font-sans, 'Manrope', ui-sans-serif, system-ui, sans-serif); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-chalk, #eef2fa); text-decoration: none; transition: color 0.3s cubic-bezier(0.16,1,0.3,1); } .ds-wordmark-dot { width: 4px; height: 4px; border-radius: 999px; background: var(--color-mint, #00ffe0); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); } .ds-wordmark:hover { color: var(--color-amber, #ffab00); } .ds-wordmark:hover .ds-wordmark-dot { transform: scale(2.2); } .ds-wordmark:focus-visible { outline: 2px solid var(--color-mint, #00ffe0); outline-offset: 3px; border-radius: 2px; }"
     },
     {
       "name": "Nav Link",
       "kind": "nav",
       "refersTo": "nav-link",
-      "description": "A wide-tracked uppercase micro-label. Faint at rest, chalk on hover. No active state is drawn.",
-      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#work\">Work</a><a class=\"ds-nav-link\" href=\"#about\">About</a><a class=\"ds-nav-link\" href=\"#contact\">Contact</a></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; gap: 36px; } .ds-nav-link { font-family: Manrope, ui-sans-serif, system-ui, sans-serif; font-size: 0.6875rem; line-height: 1; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: #6f7c9c; text-decoration: none; padding: 8px 0; transition: color 0.3s; } .ds-nav-link:hover { color: #eef2fa; } .ds-nav-link:focus-visible { outline: 2px solid #00ffe0; outline-offset: 3px; border-radius: 2px; }"
+      "description": "A tracked-out micro-label in faint that goes chalk on hover. No active-section state is drawn.",
+      "html": "<a class=\"ds-nav-link\" href=\"#work\">Work</a>",
+      "css": ".ds-nav-link { display: inline-block; padding: 8px 0; font-family: var(--font-sans, 'Manrope', ui-sans-serif, system-ui, sans-serif); font-size: 0.6875rem; font-weight: 500; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-faint, #6f7c9c); text-decoration: none; transition: color 0.3s cubic-bezier(0.16,1,0.3,1); } .ds-nav-link:hover { color: var(--color-chalk, #eef2fa); } .ds-nav-link:focus-visible { outline: 2px solid var(--color-mint, #00ffe0); outline-offset: 3px; border-radius: 2px; }"
     },
     {
       "name": "Availability Pill",
       "kind": "chip",
       "refersTo": "availability-pill",
-      "description": "Status chip with a pinging mint dot. Lives in the nav at 768px and up, inside the hero below that. One instance either way.",
-      "html": "<span class=\"ds-pill\"><span class=\"ds-pill-dot\"><span class=\"ds-pill-ping\"></span></span>Taking new projects</span>",
-      "css": ".ds-pill { display: inline-flex; align-items: center; gap: 8px; border: 1px solid #1a2133; background: rgba(9,13,24,0.6); backdrop-filter: blur(8px); border-radius: 9999px; padding: 6px 14px 6px 10px; font-family: Manrope, ui-sans-serif, system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.14em; color: #929fba; } .ds-pill-dot { position: relative; display: flex; height: 6px; width: 6px; border-radius: 9999px; background: #00ffe0; } .ds-pill-ping { position: absolute; inset: 0; border-radius: 9999px; background: #00ffe0; opacity: 0.7; animation: ds-ping 1s cubic-bezier(0,0,0.2,1) infinite; } @keyframes ds-ping { 75%, 100% { transform: scale(2.4); opacity: 0; } }"
+      "description": "Full-round chip on 60% shelf with a pinging mint dot. One instance only: hero below 768px, nav at and above it.",
+      "html": "<span class=\"ds-pill\"><span class=\"ds-pill-dot\"><i></i></span>Available for work</span>",
+      "css": ".ds-pill { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 10px; border-radius: 9999px; border: 1px solid var(--color-line, #1a2133); background: color-mix(in srgb, var(--color-shelf, #090d18) 60%, transparent); backdrop-filter: blur(8px); font-family: var(--font-sans, 'Manrope', ui-sans-serif, system-ui, sans-serif); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.14em; color: var(--color-mute, #929fba); } .ds-pill-dot { position: relative; display: inline-flex; width: 6px; height: 6px; } .ds-pill-dot i { position: absolute; inset: 0; border-radius: 9999px; background: var(--color-mint, #00ffe0); box-shadow: 0 0 0 0 var(--color-mint, #00ffe0); animation: ds-ping 1.8s cubic-bezier(0,0,0.2,1) infinite; } @keyframes ds-ping { 70% { box-shadow: 0 0 0 6px rgba(0,255,224,0); } 100% { box-shadow: 0 0 0 0 rgba(0,255,224,0); } }"
     },
     {
-      "name": "Display Headline",
+      "name": "Display Line",
       "kind": "custom",
       "refersTo": "display",
-      "description": "Poster-scale Manrope with exactly one Bodoni Moda italic word in amber. The system's signature type move.",
-      "html": "<h1 class=\"ds-display\">Creative <em class=\"ds-display-accent\">frontend</em><br>developer</h1>",
-      "css": ".ds-display { font-family: Manrope, ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: clamp(3.35rem, 11.4vw, 9.25rem); line-height: 0.86; letter-spacing: -0.045em; text-wrap: balance; color: #eef2fa; margin: 0; } .ds-display-accent { font-family: 'Bodoni Moda', ui-serif, Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: #ffab00; }"
+      "description": "The poster headline: Bodoni Moda with opsz driven to 96, carrying exactly one amber italic word.",
+      "html": "<h1 class=\"ds-display ds-display-xl\">Creative <em class=\"ds-accent\">frontend</em> developer</h1>",
+      "css": ".ds-display { font-family: var(--font-display, 'Bodoni Moda', ui-serif, Didot, Georgia, serif); font-weight: 500; font-variation-settings: 'opsz' 96; letter-spacing: -0.015em; line-height: 0.92; text-wrap: balance; color: var(--color-chalk, #eef2fa); margin: 0; } .ds-display-xl { font-size: clamp(3.6rem, 12.5vw, 11.5rem); line-height: 0.84; letter-spacing: -0.025em; } .ds-accent { font-family: var(--font-accent, 'Bodoni Moda', ui-serif, Georgia, serif); font-style: italic; font-weight: 400; letter-spacing: 0; color: var(--color-amber, #ffab00); }"
+    },
+    {
+      "name": "Kinetic Word Mask",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "The per-word mask a display reveal rises out of. The mask is the word, not the line, so it survives any wrap.",
+      "html": "<span class=\"ds-k-root\"><span class=\"ds-k-word\"><span class=\"ds-k-char\">R</span><span class=\"ds-k-char\">i</span><span class=\"ds-k-char\">s</span><span class=\"ds-k-char\">e</span></span><span class=\"ds-k-word\"><span class=\"ds-k-char\">u</span><span class=\"ds-k-char\">p</span></span></span>",
+      "css": ".ds-k-root { display: inline; font-family: var(--font-display, 'Bodoni Moda', ui-serif, Didot, Georgia, serif); font-weight: 500; font-variation-settings: 'opsz' 96; font-size: clamp(2.6rem, 7vw, 6rem); line-height: 0.9; letter-spacing: -0.015em; color: var(--color-chalk, #eef2fa); } .ds-k-word { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.14em; margin-bottom: -0.14em; margin-right: 0.24em; perspective: 700px; } .ds-k-char { display: inline-block; will-change: transform; animation: ds-rise 1.15s cubic-bezier(0.16,1,0.3,1) both; } .ds-k-word:nth-child(2) .ds-k-char { animation-delay: 0.08s; } @keyframes ds-rise { from { transform: translateY(108%) rotateX(-55deg); } to { transform: none; } } @media (prefers-reduced-motion: reduce) { .ds-k-char { animation: none; } }"
     },
     {
       "name": "Work Row",
       "kind": "custom",
       "refersTo": "work-row",
-      "description": "The refusal of the card grid: a full-width hairline-separated typographic row. Title and arrow go amber together on hover or keyboard focus.",
-      "html": "<a class=\"ds-work-row\" href=\"#\"><span class=\"ds-work-head\"><span class=\"ds-work-title\">Swayamsiddha Diagnostics</span><span class=\"ds-work-arrow\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 14L14 4M14 4H6.5M14 4v7.5\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span></span><span class=\"ds-work-blurb\">A bilingual English-Odia site for a fully automated pathology lab.</span><span class=\"ds-work-stack\">Next.js &middot; React &middot; Bilingual UI</span></a>",
-      "css": ".ds-work-row { display: block; border-bottom: 1px solid #1a2133; padding: 56px 0; text-decoration: none; cursor: pointer; font-family: Manrope, ui-sans-serif, system-ui, sans-serif; } .ds-work-head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; } .ds-work-title { font-size: 2.5rem; font-weight: 600; letter-spacing: -0.03em; color: #eef2fa; transition: color 0.5s; } .ds-work-arrow { color: #929fba; transition: color 0.5s, transform 0.5s; } .ds-work-blurb { display: block; margin-top: 20px; max-width: 58ch; font-size: 0.875rem; line-height: 1.625; color: #929fba; } .ds-work-stack { display: block; margin-top: 20px; font-size: 0.6875rem; line-height: 1; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: #6f7c9c; } .ds-work-row:hover .ds-work-title, .ds-work-row:focus-visible .ds-work-title { color: #ffab00; } .ds-work-row:hover .ds-work-arrow { color: #ffab00; transform: translateX(4px); } .ds-work-row:focus-visible { outline: 2px solid #00ffe0; outline-offset: 3px; border-radius: 2px; }"
+      "description": "The refusal of the card grid: a hairline-bottomed full-width row whose title and arrow go amber together.",
+      "html": "<a class=\"ds-work-row\" href=\"#\"><span class=\"ds-work-head\"><span class=\"ds-work-title\">Northlight Studio</span><svg class=\"ds-work-arrow\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 14L14 4M14 4H6.5M14 4v7.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span class=\"ds-work-blurb\">A booking site for a photography studio, rebuilt around a single availability calendar.</span><span class=\"ds-work-stack\">Next.js · TypeScript · Postgres</span></a>",
+      "css": ".ds-work-row { display: flex; flex-direction: column; gap: 14px; padding: 56px 0; border-bottom: 1px solid var(--color-line, #1a2133); text-decoration: none; } .ds-work-head { display: flex; align-items: center; justify-content: space-between; gap: 24px; } .ds-work-title { font-family: var(--font-display, 'Bodoni Moda', ui-serif, Didot, Georgia, serif); font-weight: 500; font-variation-settings: 'opsz' 96; font-size: 3rem; line-height: 0.92; letter-spacing: -0.015em; color: var(--color-chalk, #eef2fa); transition: color 0.5s cubic-bezier(0.16,1,0.3,1); } .ds-work-arrow { color: var(--color-mute, #929fba); transition: color 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1); } .ds-work-blurb { max-width: 58ch; font-family: var(--font-sans, 'Manrope', ui-sans-serif, system-ui, sans-serif); font-size: 0.875rem; font-weight: 500; line-height: 1.625; color: var(--color-mute, #929fba); } .ds-work-stack { font-family: var(--font-sans, 'Manrope', ui-sans-serif, system-ui, sans-serif); font-size: 0.6875rem; font-weight: 500; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-faint, #6f7c9c); } .ds-work-row:hover .ds-work-title, .ds-work-row:focus-visible .ds-work-title { color: var(--color-amber, #ffab00); } .ds-work-row:hover .ds-work-arrow, .ds-work-row:focus-visible .ds-work-arrow { color: var(--color-amber, #ffab00); transform: translateX(4px); } .ds-work-row:focus-visible { outline: 2px solid var(--color-mint, #00ffe0); outline-offset: 3px; border-radius: 2px; }"
     },
     {
-      "name": "Placeholder Badge",
-      "kind": "chip",
-      "refersTo": "work-row",
-      "description": "Marks a project row that has no live URL. Amber outline, never an amber fill.",
-      "html": "<span class=\"ds-badge\">Placeholder</span>",
-      "css": ".ds-badge { display: inline-block; border: 1px solid rgba(255,171,0,0.45); border-radius: 9999px; padding: 4px 10px; font-family: Manrope, ui-sans-serif, system-ui, sans-serif; font-size: 0.5625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: #ffab00; }"
-    },
-    {
-      "name": "Email Call To Action",
+      "name": "Email CTA",
       "kind": "button",
       "refersTo": "email-cta-mark",
-      "description": "The only filled affordance on the page: an amber circle plus the address at title scale, underlined in hairline navy.",
+      "description": "The page's only primary action: an amber circle (the one magnetic element) beside the address, underlined in hairline navy.",
       "html": "<a class=\"ds-cta\" href=\"mailto:hello@example.com\"><span class=\"ds-cta-mark\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 14L14 4M14 4H6.5M14 4v7.5\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span class=\"ds-cta-text\">hello@example.com</span></a>",
-      "css": ".ds-cta { display: inline-flex; align-items: center; gap: 24px; text-decoration: none; font-family: Manrope, ui-sans-serif, system-ui, sans-serif; } .ds-cta-mark { display: flex; height: 64px; width: 64px; flex-shrink: 0; align-items: center; justify-content: center; border-radius: 9999px; background: #ffab00; color: #05070e; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); } .ds-cta-text { font-size: 1.875rem; font-weight: 500; letter-spacing: -0.02em; color: #eef2fa; text-decoration: underline; text-decoration-color: #1a2133; text-decoration-thickness: 1px; text-underline-offset: 0.3em; transition: color 0.3s, text-decoration-color 0.3s; } .ds-cta:hover .ds-cta-mark { transform: scale(1.1); } .ds-cta:hover .ds-cta-text { color: #ffab00; text-decoration-color: #ffab00; } .ds-cta:focus-visible { outline: 2px solid #00ffe0; outline-offset: 3px; border-radius: 2px; }"
+      "css": ".ds-cta { display: inline-flex; align-items: center; gap: 24px; text-decoration: none; } .ds-cta-mark { display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; flex-shrink: 0; border-radius: 9999px; background: var(--color-amber, #ffab00); color: var(--color-void, #05070e); transition: transform 0.5s ease-out; } .ds-cta-text { font-family: var(--font-sans, 'Manrope', ui-sans-serif, system-ui, sans-serif); font-size: 2.25rem; font-weight: 500; letter-spacing: -0.02em; color: var(--color-chalk, #eef2fa); text-decoration: underline; text-decoration-color: var(--color-line, #1a2133); text-decoration-thickness: 1px; text-underline-offset: 0.3em; transition: color 0.3s cubic-bezier(0.16,1,0.3,1), text-decoration-color 0.3s cubic-bezier(0.16,1,0.3,1); } .ds-cta:hover .ds-cta-mark { transform: scale(1.1); } .ds-cta:hover .ds-cta-text { color: var(--color-amber, #ffab00); text-decoration-color: var(--color-amber, #ffab00); } .ds-cta:focus-visible { outline: 2px solid var(--color-mint, #00ffe0); outline-offset: 3px; border-radius: 2px; }"
     },
     {
       "name": "Scroll Hint",
       "kind": "button",
-      "refersTo": "work-row",
-      "description": "Secondary action: a hairline capsule with an amber bar sweeping downward on a 2.4s loop.",
-      "html": "<a class=\"ds-hint\" href=\"#work\"><span class=\"ds-hint-tube\"><span class=\"ds-hint-bar\"></span></span>Selected work</a>",
-      "css": ".ds-hint { display: inline-flex; align-items: center; gap: 12px; font-family: Manrope, ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; color: #eef2fa; text-decoration: none; transition: color 0.15s; } .ds-hint-tube { position: relative; display: flex; height: 40px; width: 24px; align-items: flex-start; justify-content: center; overflow: hidden; border-radius: 9999px; border: 1px solid rgba(111,124,156,0.6); transition: border-color 0.3s; } .ds-hint-bar { margin-top: 8px; display: block; height: 8px; width: 3px; border-radius: 9999px; background: #ffab00; animation: ds-sweep 2.4s cubic-bezier(0.16,1,0.3,1) infinite; } @keyframes ds-sweep { 0% { transform: translateY(-100%); } 100% { transform: translateY(320%); } } .ds-hint:hover { color: #ffab00; } .ds-hint:hover .ds-hint-tube { border-color: #ffab00; } @media (prefers-reduced-motion: reduce) { .ds-hint-bar { animation: none; } }"
+      "refersTo": "email-cta-mark",
+      "description": "The secondary affordance: a hairline capsule with an amber bar sweeping down on a 2.4s loop.",
+      "html": "<a class=\"ds-hint\" href=\"#work\"><span class=\"ds-hint-capsule\"><span class=\"ds-hint-bar\"></span></span>Scroll</a>",
+      "css": ".ds-hint { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-sans, 'Manrope', ui-sans-serif, system-ui, sans-serif); font-size: 0.875rem; font-weight: 500; color: var(--color-chalk, #eef2fa); text-decoration: none; transition: color 0.3s cubic-bezier(0.16,1,0.3,1); } .ds-hint-capsule { display: flex; justify-content: center; align-items: flex-start; width: 24px; height: 40px; overflow: hidden; border-radius: 9999px; border: 1px solid color-mix(in srgb, var(--color-faint, #6f7c9c) 60%, transparent); transition: border-color 0.3s cubic-bezier(0.16,1,0.3,1); } .ds-hint-bar { display: block; margin-top: 8px; width: 3px; height: 8px; border-radius: 9999px; background: var(--color-amber, #ffab00); animation: ds-sweep 2.4s cubic-bezier(0.16,1,0.3,1) infinite; } @keyframes ds-sweep { from { transform: translateY(-100%); } to { transform: translateY(320%); } } .ds-hint:hover { color: var(--color-amber, #ffab00); } .ds-hint:hover .ds-hint-capsule { border-color: var(--color-amber, #ffab00); } @media (prefers-reduced-motion: reduce) { .ds-hint-bar { animation: none; } }"
     },
     {
-      "name": "Cover Panel",
+      "name": "Sticky Cover Panel",
       "kind": "card",
       "refersTo": "cover-panel",
-      "description": "The only rounded, shadowed surface in the system, and only because it holds a photograph. Desktop sticky rail; the image rests tamed and comes to full colour on engagement.",
-      "html": "<figure class=\"ds-cover\"><div class=\"ds-cover-frame\"><img class=\"ds-cover-img\" src=\"\" alt=\"The site, as built\" loading=\"eager\" decoding=\"sync\"></div><figcaption class=\"ds-cover-meta\"><span class=\"ds-cover-kind\">Pathology lab &middot; Kendrapara</span><span class=\"ds-cover-stack\">Next.js &middot; React &middot; Bilingual UI</span></figcaption></figure>",
-      "css": ".ds-cover { margin: 0; font-family: Manrope, ui-sans-serif, system-ui, sans-serif; } .ds-cover-frame { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 12px; border: 1px solid #1a2133; background: #090d18; box-shadow: 0 30px 70px -28px rgba(2,4,10,0.9); } .ds-cover-img { height: 100%; width: 100%; object-fit: cover; filter: saturate(0.5) brightness(0.8); transition: filter 0.6s cubic-bezier(0.16,1,0.3,1); } .ds-cover-frame:hover .ds-cover-img { filter: none; } .ds-cover-meta { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; border-top: 1px solid #1a2133; padding-top: 16px; } .ds-cover-kind { font-size: 0.875rem; font-weight: 500; color: #eef2fa; } .ds-cover-stack { font-size: 0.6875rem; line-height: 1; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: #6f7c9c; } @media (prefers-reduced-motion: reduce) { .ds-cover-img { transition: none; } }"
+      "description": "The only element in the build that carries a shadow, a radius and 3D rotation. Desktop work rail only.",
+      "html": "<div class=\"ds-cover\"><div class=\"ds-cover-inner\"></div></div>",
+      "css": ".ds-cover { perspective: 1200px; perspective-origin: 50% 50%; width: 320px; } .ds-cover-inner { aspect-ratio: 4 / 3; border-radius: 12px; border: 1px solid var(--color-line, #1a2133); background: var(--color-shelf, #090d18); box-shadow: 0 30px 70px -28px rgba(2,4,10,0.9); transform-style: preserve-3d; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); filter: saturate(0.5) brightness(0.8); } .ds-cover:hover .ds-cover-inner { transform: rotateX(-4deg) rotateY(6deg) translateZ(24px); filter: none; } @media (prefers-reduced-motion: reduce) { .ds-cover-inner { transition: none; } .ds-cover:hover .ds-cover-inner { transform: none; } }"
     },
     {
-      "name": "Labelled Divider",
+      "name": "Custom Cursor",
       "kind": "custom",
-      "refersTo": "nav-link",
-      "description": "The hairline grid's only decorative form: a micro-label followed by a rule filling the remaining width.",
-      "html": "<div class=\"ds-divider\"><span class=\"ds-divider-label\">What that means in practice</span><span class=\"ds-divider-rule\"></span></div>",
-      "css": ".ds-divider { display: flex; align-items: center; gap: 16px; } .ds-divider-label { font-family: Manrope, ui-sans-serif, system-ui, sans-serif; font-size: 0.6875rem; line-height: 1; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: #6f7c9c; white-space: nowrap; } .ds-divider-rule { height: 1px; flex: 1; background: #1a2133; }"
+      "refersTo": "cursor-ring",
+      "description": "Trailing ring plus exact dot in difference blend; amber ring over interactive targets. Never shown on coarse pointers or reduced motion.",
+      "html": "<div class=\"ds-cursor-stage\"><span class=\"ds-cursor-ring\" data-on=\"true\"></span><span class=\"ds-cursor-dot\"></span></div>",
+      "css": ".ds-cursor-stage { position: relative; height: 60px; display: flex; align-items: center; gap: 40px; } .ds-cursor-ring { width: 34px; height: 34px; border-radius: 999px; border: 1px solid rgba(238,242,250,0.6); mix-blend-mode: difference; transition: border-color 0.35s cubic-bezier(0.16,1,0.3,1), background-color 0.35s cubic-bezier(0.16,1,0.3,1); } .ds-cursor-ring[data-on=\"true\"] { border-color: var(--color-amber, #ffab00); background-color: rgba(255,171,0,0.1); transform: scale(2.1); } .ds-cursor-dot { width: 5px; height: 5px; border-radius: 999px; background: var(--color-chalk, #eef2fa); mix-blend-mode: difference; } @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) { .ds-cursor-ring, .ds-cursor-dot { display: none; } }"
+    },
+    {
+      "name": "Field Scrim",
+      "kind": "custom",
+      "refersTo": "cover-panel",
+      "description": "The vignette and floor that keep type off the brightest part of the field. Paints above every atmospheric layer at z-index 1.",
+      "html": "<div class=\"ds-scrim\"><span class=\"ds-scrim-vignette\"></span><span class=\"ds-scrim-floor\"></span></div>",
+      "css": ".ds-scrim { position: relative; height: 220px; background: radial-gradient(60% 80% at 30% 20%, #123a9e 0%, #05070e 70%); overflow: hidden; } .ds-scrim-vignette { position: absolute; inset: 0; background: radial-gradient(130% 92% at 62% 0%, transparent 30%, rgba(5,7,14,0.34) 62%, rgba(5,7,14,0.86) 100%); } .ds-scrim-floor { position: absolute; left: 0; right: 0; bottom: 0; height: 52%; background: linear-gradient(to bottom, transparent, rgba(5,7,14,0.7) 55%, #05070e); }"
     }
   ],
   "narrative": {
     "northStar": "The Lit Room After Dark",
-    "overview": "WEBLOOM is a single dark room with one light source in it. The ground is a deep navy-black that is never pure black, and behind everything drifts one aurora — a blue body with mint and amber lobes — that moves slowly enough that you notice it only on the second look. Film grain lies over the whole surface at 3.2% opacity, which is both the room's texture and the thing that kills gradient banding on a dark ground. Every element in the build sits on that atmosphere at z-index 10; nothing gets its own box.\n\nThe system's density is editorial, not app-like. There are no cards: work is a list of large typographic rows separated by hairlines, capabilities are a definition list separated by hairlines, and the only rectangles with corners on them are photographs of real sites. Type does the structural work that borders and panels do elsewhere — a 9.25rem display line, a 0.6875rem label tracked out to 0.22em, and almost nothing in between doing decoration.\n\nThe palette is deliberately two-accent. Amber acts (the italic word, hover states, the email mark, the primary affordance in every schematic); mint measures (the live dot, the focus ring, the caret, data lines). No third hue is admitted, which is why real project screenshots rest desaturated. The build's confirmed rejection is the resume grid of equal cards; the confirmed material rejection is a live filter: blur() on the atmosphere, whose Gaussian is baked into transparent PNGs at build time so the shipped layers only ever transform.",
+    "overview": "WEBLOOM is a single dark room with one light source in it. The ground is a deep navy-black that is never pure black, and behind everything the aurora burns — on capable desktops as live domain-warped noise on the GPU, everywhere else as pre-blurred transparent PNGs drifting on slow loops. Film grain lies over the whole surface at 3.2% opacity, which is both the room's texture and the thing that kills gradient banding on a dark ground. Every element of content sits on that atmosphere at z-index: 10; nothing gets its own box.\n\nThe display voice is a Didone. Bodoni Moda is loaded variable with the optical-size axis exposed and pushed to \"opsz\" 96 at display scale, because a didone's entire character is the hairline-to-stem contrast and that contrast collapses if opsz is left tracking a body size. Manrope does everything below the display line: prose, labels, the wordmark, UI. The single amber italic word inside each display line survives from the previous world and is still the signature — it is now the same family as its host line, differing only in style, weight and tracking, which makes it read as an inflection rather than a collision.\n\nThe system's density is editorial, not app-like. There are no cards: work is a list of large typographic rows separated by hairlines, capabilities are a definition list separated by hairlines, and the only rectangles with corners on them are photographs of real sites. The palette is deliberately two-accent — amber acts, mint measures — and no third hue is admitted, which is why real project screenshots rest desaturated and why the live shader is coloured strictly out of the same five values. The build's confirmed rejection is the resume grid of equal cards.",
     "keyCharacteristics": [
-      "One drifting aurora field behind everything; the page itself has no other background treatment.",
-      "Exactly two accents — amber for action, mint for status and focus — on a navy-black ground.",
+      "One aurora field behind everything — live on the GPU where the device can carry it, baked raster everywhere else — and no other background treatment.",
+      "Exactly two accents, amber for action and mint for status and focus, on a navy-black ground.",
+      "Poster-scale Bodoni Moda with the optical-size axis driven to 96; Manrope for every non-display word.",
       "Hairline rules and wide-tracked micro-labels instead of cards, panels, or fills.",
-      "Poster-scale Manrope with a single Bodoni Moda italic word per display line.",
-      "Visible-by-default content: motion is additive, and every animation is off under reduced motion."
+      "Display type arrives by rising out of per-word masks; everything is visible by default and dead under reduced motion."
     ],
     "rules": [
-      { "name": "The Two-Accent Rule", "body": "Amber and mint are the entire accent vocabulary. A third hue may not enter the page from any source — including imported imagery, which is why project screenshots rest at reduced saturation.", "section": "colors" },
+      { "name": "The Two-Accent Rule", "body": "Amber and mint are the entire accent vocabulary. A third hue may not enter the page from any source — not from imported imagery, which is why project screenshots rest at reduced saturation, and not from the shader, whose fragment output is mixed only from void, blue-body, mint and amber.", "section": "colors" },
       { "name": "The Contrast Floor Rule", "body": "Faint is the darkest text tone the system permits, at 4.83:1 on the void ground. Anything that carries words — labels, stack lists, years, placeholder copy — sits at faint or lighter. No new dimmer neutral gets invented for \"quieter\" text.", "section": "colors" },
       { "name": "The Tinted Neutral Rule", "body": "Every neutral in the system carries the ground's blue hue. A neutral gray is out of world.", "section": "colors" },
-      { "name": "The One Italic Word Rule", "body": "A display line gets at most one Bodoni italic word, and it is always amber. Two italic words in one composition is out of world; the accent face never sets a whole line, a paragraph, or a label.", "section": "typography" },
+      { "name": "The Optical Size Rule", "body": "Every use of the display face at display scale sets font-variation-settings: \"opsz\" 96. The hairline-to-stem contrast is the whole reason the face is here, and at a default opsz the letterforms thicken into a generic serif. Correspondingly, the display face is never used below roughly 1.5rem — small Bodoni is unreadable on a dark ground and is what Manrope is for.", "section": "typography" },
+      { "name": "The One Italic Word Rule", "body": "A display line gets at most one italic word, and it is always amber. Two italic words in one composition is out of world; the italic never sets a whole line, a paragraph, or a label.", "section": "typography" },
+      { "name": "The Sans-Below-The-Headline Rule", "body": "Anything that is not a headline is Manrope: prose, labels, wordmark, buttons, meta, footer. There is no third face, and the serif never runs a sentence.", "section": "typography" },
       { "name": "The Label-or-Nothing Rule", "body": "Small text is either body-small in mute or a 0.22em-tracked uppercase label in faint. There is no third small-text style, and labels are never set in an accent colour.", "section": "typography" },
-      { "name": "The Tightening Ramp Rule", "body": "Tracking tightens as size grows: -0.045em at display, -0.035em at headline, -0.03em at title, normal at body, +0.22em at label. Any new size picks its tracking off this ramp.", "section": "typography" },
+      { "name": "The Word-Mask Rule", "body": "Display type reveals out of masks that are one word wide, never one line wide, so the effect survives any wrap at any viewport. A revealed line must be verifiable: scripts/kinetic-check.mjs asserts that no split character is left stuck inside a mask anywhere on the page.", "section": "typography" },
       { "name": "The Hairline Grid Rule", "body": "Structure is drawn with 1px borders in hairline navy, never with background fills, gaps alone, or boxes. A section header is a heading above a border-b; a list is rows with border-b.", "section": "layout" },
-      { "name": "The Fold Composition Rule", "body": "Aurora geometry is authored per breakpoint, not derived from the desktop layout. Any new atmospheric layer specifies its mobile placement explicitly.", "section": "layout" },
-      { "name": "The Baked Blur Rule", "body": "Atmospheric softness is baked into raster assets at build time (scripts/gen-aurora.mjs). A live filter: blur() on a full-bleed layer re-rasterises the whole surface every frame and stalled the compositor hard enough to time out screenshot capture; raw radial gradients avoid the cost but band visibly on the dark ground. Shipped atmosphere layers only ever transform.", "section": "elevation" },
+      { "name": "The Fold Composition Rule", "body": "Field geometry is authored per breakpoint, not derived from the desktop layout. Any new atmospheric layer specifies its mobile placement explicitly.", "section": "layout" },
+      { "name": "The Scrim-Above-The-Field Rule", "body": "The vignette and floor are legibility, not decoration, so they paint above every field layer at z-[1]. A field drawn on top of its own protection puts the headline on a wall of blue; any new atmospheric layer goes under the scrim, never over it.", "section": "elevation" },
+      { "name": "The Enhancement-Not-Foundation Rule", "body": "The live shader is an enhancement over a design that is complete without it. It boots on requestIdleCallback, only at >=1024px with pointer: fine, never under reduced motion, and fades its own uniform in; when it succeeds it stamps shader-live on <html> and the baked layers cross-fade out over 1.6s. If OGL fails to import or the context fails to create, the PNG field simply stays. Phones get the PNG field by design, not by degradation.", "section": "elevation" },
+      { "name": "The Baked Blur Rule", "body": "Atmospheric softness in the raster path is baked at build time (scripts/gen-aurora.mjs). A live filter: blur() on a full-bleed layer re-rasterises the whole surface every frame and stalled the compositor hard enough to time out screenshot capture; raw radial gradients avoid the cost but band visibly on the dark ground. Shipped raster atmosphere layers only ever transform.", "section": "elevation" },
       { "name": "The One Shadow Rule", "body": "Surfaces are flat. The cover drop is the system's entire shadow vocabulary; new components get separation from a hairline or from the ground, not from a shadow.", "section": "elevation" },
-      { "name": "The Visible-By-Default Rule", "body": "Content ships visible; the js class on <html> is what opts an element into being hidden before its reveal. A failed or blocked script leaves a complete page, never a blank one.", "section": "components" },
-      { "name": "The Reduced-Motion Kill Rule", "body": "Under prefers-reduced-motion: reduce the aurora drift, the hero line rise, the scroll hint sweep, smooth scrolling and all reveal transitions are switched off, reveals are marked shown immediately, and every remaining animation and transition is clamped to 0.001ms. Motion is never load-bearing for legibility.", "section": "components" }
+      { "name": "The Visible-By-Default Rule", "body": "Content ships visible; the js class on <html> is what opts an element into being hidden before its reveal. A failed or blocked script leaves a complete page, never a blank one — which is also why the curtain mounts client-side only and the native cursor is hidden from inside the cursor script.", "section": "components" },
+      { "name": "The Rationed Magnetism Rule", "body": "Magnetic attraction is applied to the contact CTA mark and nothing else. A page where everything is magnetic feels loose; the effect is a reward for reaching the one thing the page wants you to click.", "section": "components" },
+      { "name": "The Reduced-Motion Kill Rule", "body": "Under prefers-reduced-motion: reduce the shader never mounts, the curtain never renders, the custom cursor is display: none and the native pointer is left alone, kinetic characters are set to transform: none and marked ready, drift, sweep, smooth scrolling and reveal transitions are switched off, and every remaining animation and transition is clamped to 0.001ms. Motion is never load-bearing for legibility.", "section": "components" },
+      { "name": "The Verified-Craft Rule", "body": "Every effect that can fail silently has a script that fails loudly: kinetic-check.mjs (no character stranded in a mask), cover-check.mjs (every cover decodes at both widths), sticky-check.mjs (column lengths), shoot.mjs (capture from the production export, not the dev server). A motion effect without a check is not finished.", "section": "components" }
     ],
     "dos": [
-      "Do put every new section on the shared container (max-width: 1400px, gutters 20/32/48px) with relative z-10 so it sits above the fixed aurora.",
+      "Do put every new section on the shared container (max-width: 1400px, gutters 20/32/48px) with relative z-10 so it sits above the field stack.",
+      "Do set font-variation-settings: \"opsz\" 96 on any display-scale use of Bodoni Moda, and use Manrope for everything that is not a headline.",
       "Do separate content with 1px hairline-navy rules and let type carry hierarchy.",
-      "Do ration the Bodoni italic to one amber word per display line.",
+      "Do ration the amber italic to one word per display line.",
       "Do keep small text at either body-small in mute or a 0.22em-tracked uppercase label in faint at 4.83:1 or better on the ground.",
       "Do give amber the acting job and mint the measuring job; hover and focus resolve to amber, status and focus rings resolve to mint.",
-      "Do bake atmospheric blur into raster assets and animate only transform and opacity on full-bleed layers.",
-      "Do render one instance of a responsive element and move it between breakpoints, as the availability pill does at 768px.",
+      "Do mask kinetic reveals per word so they survive a wrap, and let GSAP own a transform with an explicit set before tweening it.",
+      "Do paint legibility scrims above every atmospheric layer, and gate GPU and pointer effects behind >=1024px, pointer: fine, idle-time boot and a working fallback.",
       "Do gate every animation behind prefers-reduced-motion and ship content visible without JavaScript."
     ],
     "donts": [
       "Don't build a card: no filled panel, no rounded box, no shadowed tile for text content. Rows and rules only.",
-      "Don't introduce a third hue. Imported imagery that carries one gets desaturated at rest rather than admitted.",
+      "Don't introduce a third hue. Imported imagery that carries one gets desaturated at rest; the shader mixes only from the world's own five colours.",
+      "Don't set the display face below ~1.5rem, or set a sentence, a label or the wordmark in it.",
+      "Don't animate display type before document.fonts.ready — the didone's metrics shift on swap and the letters jump.",
       "Don't apply filter: blur() to a full-bleed animated layer.",
       "Don't add a shadow to anything but an image panel; the cover drop is the whole vocabulary.",
       "Don't use a neutral gray, or a text tone dimmer than faint.",
       "Don't use icon fonts or glyph characters — icons are inline stroked SVG at 1.4-1.8 stroke width.",
-      "Don't derive mobile atmosphere placement from the desktop composition; author aurora geometry per breakpoint.",
+      "Don't hide the native cursor from CSS alone; only the mounted cursor script may add cursor-custom.",
+      "Don't make an enhancement load-bearing: a device without a GPU field, a magnet or a tilt must still get the finished page.",
+      "Don't derive mobile atmosphere placement from the desktop composition; author field geometry per breakpoint.",
       "Don't lazy-load an image that can appear in the first screenful or two of a fast scroll."
     ]
   }
