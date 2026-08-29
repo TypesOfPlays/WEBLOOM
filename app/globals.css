@@ -413,6 +413,23 @@ html.cursor-custom * {
   letter-spacing: -0.04em;
 }
 
+/* Räder carries a hairline. At poster scale it is the whole reason to use
+   this family, and it lets the light field read through the headline instead
+   of being blocked by it. Only above 1024px — at 3.6rem a 100 weight on a
+   dark ground goes thin enough to hurt. */
+@media (min-width: 1024px) {
+  .rader-live .display-xl {
+    font-weight: 100;
+    letter-spacing: -0.028em;
+  }
+
+  /* The accent word is set apart by colour and slope, not by weight. Leaving
+     it at 400 inside a hairline headline reads as a bolded word by mistake. */
+  .rader-live .display-xl .accent-italic {
+    font-weight: 100;
+  }
+}
+
 .rader-live .accent-italic {
   font-weight: 400;
   letter-spacing: -0.028em;

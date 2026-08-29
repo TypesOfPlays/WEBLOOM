@@ -53,30 +53,51 @@ export const metadata: Metadata = {
 };
 
 /**
- * Räder (Pangram Pangram) is a licensed face and is not committed to this
- * repo. The @font-face is declared unconditionally: if the files are absent
- * the browser simply falls through to Bodoni Moda, so a missing licence
- * degrades instead of breaking the build or the deploy.
+ * PP Räder (Pangram Pangram), self-hosted from public/fonts as four static
+ * weights subsetted to Latin. Declared here rather than in globals.css
+ * because the src has to carry the GitHub Pages base path, and CSS url()
+ * cannot read a custom property.
  *
- * Declared here rather than in globals.css because the src has to carry the
- * GitHub Pages base path, and CSS url() cannot read a custom property.
+ * Only the faces the page actually renders are ever downloaded, so the Thin
+ * and Bold declarations cost nothing on viewports that do not use them. If
+ * the files were ever removed, the stack falls through to Bodoni Moda rather
+ * than breaking the build.
  */
 const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const RADER_FACE = `
 @font-face {
   font-family: "Rader";
-  src: url("${bp}/fonts/Rader-Variable.woff2") format("woff2-variations"),
-       url("${bp}/fonts/Rader-Regular.woff2") format("woff2");
-  font-weight: 100 700;
+  src: url("${bp}/fonts/Rader-Thin.woff2") format("woff2");
+  font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Rader";
-  src: url("${bp}/fonts/Rader-Variable-Italic.woff2") format("woff2-variations"),
-       url("${bp}/fonts/Rader-Italic.woff2") format("woff2");
-  font-weight: 100 700;
+  src: url("${bp}/fonts/Rader-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rader";
+  src: url("${bp}/fonts/Rader-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rader";
+  src: url("${bp}/fonts/Rader-ThinItalic.woff2") format("woff2");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rader";
+  src: url("${bp}/fonts/Rader-Italic.woff2") format("woff2");
+  font-weight: 400;
   font-style: italic;
   font-display: swap;
 }`;

@@ -216,11 +216,15 @@ Numerals in years, indices and timezones use tabular figures (`font-variant-nume
 
 ### The Licensed Face Rule
 
-Räder is paid and is deliberately **not** committed to this repo. The `@font-face` is declared unconditionally in `app/layout.tsx` — with the base path baked into `src`, because CSS `url()` cannot read a custom property — so a missing licence degrades to Bodoni Moda instead of breaking the build or the deploy.
+The display face is **PP Räder** (Valerio Monopoli, Pangram Pangram), self-hosted from `public/fonts` as five static weights — Thin, Regular and Bold plus Thin Italic and Italic — converted from the foundry's OTFs to Latin-subsetted WOFF2 at roughly 70KB each. **Bodoni Moda remains the declared fallback** and renders wherever those files are absent, so removing them reverts the site with no code change.
 
-The two faces are not interchangeable and must not share metrics. Räder is a road-sign sans; Bodoni is a Didone. A runtime probe calls `document.fonts.load('1em Rader')` and stamps `rader-live` on `<html>` only on success, and the `.rader-live` rules then drop the `opsz` axis Räder does not have and open the tracking Bodoni needed closed. Never tune one face's spacing on the other's cascade.
+The files currently in the repo came from the foundry's *free for personal use* package. This site advertises freelance services, which is commercial use, so that entitlement does not cover it; a commercial licence is outstanding. Recorded here as a known exception rather than left implicit.
 
-Add the upright and the italic together. With one present the headline renders half Räder and half Bodoni, which reads as a bug rather than a choice.
+The `@font-face` blocks live in `app/layout.tsx`, not in the stylesheet, because `src` has to carry the GitHub Pages base path and CSS `url()` cannot read a custom property. A probe calls `document.fonts.load('1em Rader')` and stamps `rader-live` on `<html>` only on success; the `.rader-live` rules then drop the `opsz` axis Räder does not have and open the tracking Bodoni needed closed. Never tune one face's spacing on the other's cascade.
+
+### The Hairline Headline Rule
+
+Above 1024px the hero drops to weight 100 and the amber accent word drops with it. Räder's hairline is the reason to use this family at poster scale, and it lets the light field read through the headline instead of being blocked by it. The accent word is set apart by colour and slope alone — leaving it at 400 inside a hairline line reads as a word accidentally bolded. Below 1024px both return to 400: at 3.6rem a hairline on a dark ground goes too thin to hold.
 
 ## Layout
 

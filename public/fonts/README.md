@@ -1,45 +1,59 @@
-# Drop the Räder font files here
+# PP Räder — self-hosted display face
 
-The site is already wired for Räder — it will switch over automatically as
-soon as these files exist. Until then it falls back to Bodoni Moda, so the
-build and the live site keep working with nothing missing.
+These are the WOFF2 files the site's headings, wordmark and amber accent word
+render in. They are generated, not downloaded in this form — see below.
 
-## What to buy
+## Licence — read this
 
-**Räder**, by Valerio Monopoli — published by **Pangram Pangram**
-https://pangrampangram.com/products/rader
+Source package: `PPRader-Free_for_personal_use_v1.0.zip`, whose own EULA is
+`EULA-PangramPangram-FreeForPersonalUse-MAY2021`.
 
-Not Future Fonts. Commercial licences start around $40. The "free to try"
-version is for evaluation: this site advertises freelance services, which is
-commercial use, so it needs a paid licence.
+**That licence covers personal use only.** WEBLOOM advertises freelance
+services, which is commercial use, so this site is currently outside the terms
+it was given. A commercial licence from the foundry starts around $40:
 
-Buy the **variable** family if it is offered — one file covers every weight
-and the display sizes on this site use a light-to-regular range.
+    https://pangrampangram.com/products/rader
 
-## Exact filenames expected
+Buying it changes nothing in the code — same family name, same filenames. Only
+the entitlement changes. Until then this is a known, deliberate exception, not
+an oversight.
 
-Download the **web** package (WOFF2) and rename to these, exactly:
+If you would rather not license it, delete this directory's `.woff2` files and
+the site falls straight back to Bodoni Moda with no code change.
 
-    public/fonts/Rader-Variable.woff2          <- upright, variable
-    public/fonts/Rader-Variable-Italic.woff2   <- italic, variable
+## What is here, and how it was made
 
-If you bought static weights instead of variable, use these two instead and
-tell me — the @font-face block in app/layout.tsx needs a one-line change:
+The free package ships six static **OTF** files and no web formats, so each
+was converted to WOFF2 and subsetted to Latin (the page has no other scripts;
+the Odia on the Swayamsiddha sites belongs to those sites, not this one):
 
-    public/fonts/Rader-Regular.woff2
-    public/fonts/Rader-Italic.woff2
+```bash
+python -m fontTools.subset "PPRader-Thin.otf" \
+  --output-file="Rader-Thin.woff2" --flavor=woff2 --layout-features='*' \
+  --unicodes="U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD"
+```
 
-## What happens then
+That takes each face from ~245KB to ~70KB. Requires `fonttools` and `brotli`.
 
-1. `npm run build`
-2. The page adds a `rader-live` class once the font actually loads, which
-   applies Räder's own tracking instead of the didone's.
-3. Headings, the WEBLOOM wordmark, and the amber accent word all switch.
+| File | Weight | Used by |
+| --- | --- | --- |
+| `Rader-Thin.woff2` | 100 | The hero headline above 1024px |
+| `Rader-ThinItalic.woff2` | 100 italic | The amber accent word in that headline |
+| `Rader-Regular.woff2` | 400 | Every other heading, and the hero below 1024px |
+| `Rader-Italic.woff2` | 400 italic | The amber accent word at those sizes |
+| `Rader-Bold.woff2` | 700 | The WEBLOOM wordmark |
 
-Body copy, labels and UI stay on Manrope either way — that is deliberate.
+`BoldItalic` and the unsubsetted originals are deliberately not shipped —
+nothing on the page renders them.
 
-## Both files or neither
+Browsers fetch only the faces actually rendered, so a phone never downloads
+the two hairline files.
 
-Add the upright and the italic together. With only one present the headline
-renders half Räder and half Bodoni, which looks like a bug rather than a
-choice.
+## How the swap works
+
+`app/layout.tsx` declares the `@font-face` blocks with the GitHub Pages base
+path baked into `src`, because CSS `url()` cannot read a custom property. A
+probe then calls `document.fonts.load('1em Rader')` and stamps `rader-live` on
+`<html>` only on success — the `.rader-live` rules drop the optical-size axis
+Räder does not have and open the tracking Bodoni needed closed. Didone spacing
+on a road-sign sans reads as a mistake.
