@@ -15,7 +15,7 @@ export default function Footer() {
             height={187}
             className="h-5 w-auto"
           />
-          <span className="font-display text-[0.8rem] font-extrabold uppercase tracking-[0.3em] text-chalk">
+          <span className="wordmark text-chalk">
             {site.name}
           </span>
           <span className="h-1 w-1 rounded-full bg-mint" />

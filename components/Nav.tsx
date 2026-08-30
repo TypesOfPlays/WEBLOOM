@@ -50,7 +50,7 @@ export default function Nav() {
             height={187}
             className="h-5 w-auto transition-transform duration-500 ease-out group-hover:scale-105 sm:h-6"
           />
-          <span className="flex items-baseline gap-1.5 font-display text-[0.8rem] font-extrabold uppercase tracking-[0.16em] sm:gap-2 sm:text-sm sm:tracking-[0.3em]">
+          <span className="wordmark flex items-baseline gap-1.5 sm:gap-2">
             {site.name}
             <span className="h-1 w-1 rounded-full bg-mint transition-transform duration-300 group-hover:scale-[2.2]" />
           </span>

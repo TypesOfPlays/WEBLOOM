@@ -646,6 +646,24 @@ html.cursor-custom * {
   font-size: 1.875rem;
 }
 
+/* The wordmark is its own step: it sits in the nav and the footer at a size
+   nothing else on the page uses, and its tracking opens up once there is room
+   for it. */
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+}
+
+@media (min-width: 640px) {
+  .wordmark {
+    font-size: 0.875rem;
+    letter-spacing: 0.3em;
+  }
+}
+
 @media (min-width: 640px) {
   .display-statement {
     font-size: 3rem;
